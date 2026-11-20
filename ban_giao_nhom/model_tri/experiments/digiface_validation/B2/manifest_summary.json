@@ -1,0 +1,12 @@
+{
+  "manifest_sha256": "4c721f175d75e1c5d84017b3061f4a29b7687eb09155b8207fba7f1a660a2fb5",
+  "train_images": 57600,
+  "train_monitor_excluded": 6400,
+  "val_images": 8000,
+  "train_identities": 1600,
+  "val_known_identities": 100,
+  "val_unknown_identities": 100,
+  "train_qa_flagged": 1794,
+  "val_qa_flagged": 231,
+  "test_images_opened": 0
+}

@@ -1,0 +1,23 @@
+{
+  "mode": "B1",
+  "epoch": 2,
+  "step": 14400,
+  "optimizer_steps_this_epoch": 7200,
+  "samples_seen": 57600,
+  "train_loss": 2.647483096652561,
+  "DIR": 0.9348648648648649,
+  "FPIR": 0.0475,
+  "threshold": 0.6173406839370728,
+  "known_correct_accepted": 3459,
+  "known_wrong_identity_accepted": 36,
+  "known_rejected": 205,
+  "unknown_accepted": 190,
+  "unknown_rejected": 3810,
+  "known_queries": 3700,
+  "unknown_queries": 4000,
+  "closed_set_rank1": 0.9672972972972973,
+  "validation_images": 8000,
+  "gallery_identities": 100,
+  "preprocessing": "A_direct_resize_160_PIL_BILINEAR",
+  "embedding_dim": 512
+}

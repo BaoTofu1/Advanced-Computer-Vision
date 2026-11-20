@@ -1,0 +1,8 @@
+{
+  "created_utc": "2026-11-05T15:18:57.108692+00:00",
+  "torch": "2.2.2+cu118",
+  "facenet_pytorch": "2.6.0",
+  "numpy": "1.26.4",
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 2080 Ti"
+}

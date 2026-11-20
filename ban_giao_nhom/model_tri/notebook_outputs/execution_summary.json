@@ -1,0 +1,202 @@
+{
+  "checks": "PASS",
+  "thresholds": {
+    "B0": 0.693074107170105,
+    "B1_Bao": 0.5314350128173828,
+    "B2_Bao": 0.5252442359924316,
+    "B1_Tri": 0.5494138598442078,
+    "B2_Tri": 0.573417603969574
+  },
+  "lock_status": "vừa ghi file khóa",
+  "validation": [
+    {
+      "model": "B0",
+      "ngưỡng": 0.693074107170105,
+      "DIR nền": 0.5708108108108109,
+      "FPIR nền": 0.05,
+      "Rank-1 nền": 0.8286486486486486,
+      "đúng (nền)": 2112,
+      "DIR che": 0.2272972972972973,
+      "FPIR che": 0.0275
+    },
+    {
+      "model": "B1_Bao",
+      "ngưỡng": 0.5314350128173828,
+      "DIR nền": 0.9348648648648649,
+      "FPIR nền": 0.0485,
+      "Rank-1 nền": 0.97,
+      "đúng (nền)": 3459,
+      "DIR che": 0.5651351351351351,
+      "FPIR che": 0.04325
+    },
+    {
+      "model": "B2_Bao",
+      "ngưỡng": 0.5252442359924316,
+      "DIR nền": 0.9348648648648649,
+      "FPIR nền": 0.0495,
+      "Rank-1 nền": 0.9708108108108108,
+      "đúng (nền)": 3459,
+      "DIR che": 0.7962162162162162,
+      "FPIR che": 0.047
+    },
+    {
+      "model": "B1_Tri",
+      "ngưỡng": 0.5494138598442078,
+      "DIR nền": 0.9475675675675675,
+      "FPIR nền": 0.04925,
+      "Rank-1 nền": 0.9716216216216216,
+      "đúng (nền)": 3506,
+      "DIR che": 0.6248648648648648,
+      "FPIR che": 0.06125
+    },
+    {
+      "model": "B2_Tri",
+      "ngưỡng": 0.573417603969574,
+      "DIR nền": 0.9456756756756757,
+      "FPIR nền": 0.05,
+      "Rank-1 nền": 0.971081081081081,
+      "đúng (nền)": 3499,
+      "DIR che": 0.7494594594594595,
+      "FPIR che": 0.05675
+    }
+  ],
+  "reproduce_tri": [
+    {
+      "model": "B1_Tri",
+      "đúng (Trí báo)": 3507,
+      "đúng (notebook này)": 3506,
+      "ngưỡng (Trí báo)": 0.549332,
+      "ngưỡng (notebook này)": 0.549414
+    },
+    {
+      "model": "B2_Tri",
+      "đúng (Trí báo)": 3498,
+      "đúng (notebook này)": 3499,
+      "ngưỡng (Trí báo)": 0.573716,
+      "ngưỡng (notebook này)": 0.573418
+    }
+  ],
+  "test": [
+    {
+      "model": "B0",
+      "DigiFace test DIR nền": 0.6291891891891892,
+      "DigiFace test FPIR nền": 0.049,
+      "DigiFace test DIR che": 0.2545945945945946,
+      "ROF Rank-1": 0.9279572391354869,
+      "ROF Rank-1 khẩu trang": 0.8033707865168539,
+      "ROF Rank-1 kính râm": 0.8498603351955307,
+      "ROF DIR @FPIR5% trên ROF": 0.7773646293283756,
+      "ROF FPIR tại ngưỡng val": 0.0009337068160597573,
+      "MFR2 AUC": 0.9907718494126023
+    },
+    {
+      "model": "B1_Bao",
+      "DigiFace test DIR nền": 0.9537837837837838,
+      "DigiFace test FPIR nền": 0.061,
+      "DigiFace test DIR che": 0.5894594594594594,
+      "ROF Rank-1": 0.7222867766674413,
+      "ROF Rank-1 khẩu trang": 0.34831460674157305,
+      "ROF Rank-1 kính râm": 0.4937150837988827,
+      "ROF DIR @FPIR5% trên ROF": 0.4055310248663723,
+      "ROF FPIR tại ngưỡng val": 0.896358543417367,
+      "MFR2 AUC": 0.934941260234959
+    },
+    {
+      "model": "B2_Bao",
+      "DigiFace test DIR nền": 0.9524324324324325,
+      "DigiFace test FPIR nền": 0.08725,
+      "DigiFace test DIR che": 0.8105405405405406,
+      "ROF Rank-1": 0.6716244480594934,
+      "ROF Rank-1 khẩu trang": 0.3651685393258427,
+      "ROF Rank-1 kính râm": 0.4301675977653631,
+      "ROF DIR @FPIR5% trên ROF": 0.32907273994887287,
+      "ROF FPIR tại ngưỡng val": 0.934640522875817,
+      "MFR2 AUC": 0.9441137860448559
+    },
+    {
+      "model": "B1_Tri",
+      "DigiFace test DIR nền": 0.9691891891891892,
+      "DigiFace test FPIR nền": 0.082,
+      "DigiFace test DIR che": 0.6381081081081081,
+      "ROF Rank-1": 0.6892865442714385,
+      "ROF Rank-1 khẩu trang": 0.3089887640449438,
+      "ROF Rank-1 kính râm": 0.45321229050279327,
+      "ROF DIR @FPIR5% trên ROF": 0.3465024401580293,
+      "ROF FPIR tại ngưỡng val": 0.934640522875817,
+      "MFR2 AUC": 0.914560341758633
+    },
+    {
+      "model": "B2_Tri",
+      "DigiFace test DIR nền": 0.9583783783783784,
+      "DigiFace test FPIR nền": 0.072,
+      "DigiFace test DIR che": 0.75,
+      "ROF Rank-1": 0.6030676272368115,
+      "ROF Rank-1 khẩu trang": 0.30337078651685395,
+      "ROF Rank-1 kính râm": 0.3463687150837989,
+      "ROF DIR @FPIR5% trên ROF": 0.27353009528236116,
+      "ROF FPIR tại ngưỡng val": 0.9290382819794585,
+      "MFR2 AUC": 0.9415049839800641
+    }
+  ],
+  "diff": [
+    {
+      "so sánh": "B1: Trí − Bảo",
+      "chỉ số": "DigiFace test, DIR nền",
+      "điểm": 0.015405405405405359,
+      "ci95 thấp": 0.005675675675675618,
+      "ci95 cao": 0.02648648648648655
+    },
+    {
+      "so sánh": "B1: Trí − Bảo",
+      "chỉ số": "DigiFace test, DIR che",
+      "điểm": 0.04864864864864871,
+      "ci95 thấp": 0.027027027027027084,
+      "ci95 cao": 0.06864864864864861
+    },
+    {
+      "so sánh": "B1: Trí − Bảo",
+      "chỉ số": "ROF, Rank-1",
+      "điểm": -0.033000232396002804,
+      "ci95 thấp": -0.05158520554870369,
+      "ci95 cao": -0.014960387103244271
+    },
+    {
+      "so sánh": "B1_Tri − B0",
+      "chỉ số": "ROF, Rank-1",
+      "điểm": -0.23867069486404835,
+      "ci95 thấp": -0.2687044171601225,
+      "ci95 cao": -0.20975445992350436
+    },
+    {
+      "so sánh": "B2: Trí − Bảo",
+      "chỉ số": "DigiFace test, DIR nền",
+      "điểm": 0.005945945945945885,
+      "ci95 thấp": -0.008108108108108029,
+      "ci95 cao": 0.019459459459459483
+    },
+    {
+      "so sánh": "B2: Trí − Bảo",
+      "chỉ số": "DigiFace test, DIR che",
+      "điểm": -0.06054054054054059,
+      "ci95 thấp": -0.07865540540540537,
+      "ci95 cao": -0.04162162162162164
+    },
+    {
+      "so sánh": "B2: Trí − Bảo",
+      "chỉ số": "ROF, Rank-1",
+      "điểm": -0.06855682082268189,
+      "ci95 thấp": -0.0872615441776405,
+      "ci95 cao": -0.04830296933949883
+    },
+    {
+      "so sánh": "B2_Tri − B0",
+      "chỉ số": "ROF, Rank-1",
+      "điểm": -0.3248896118986754,
+      "ci95 thấp": -0.3599479892203341,
+      "ci95 cao": -0.29180013821825557
+    }
+  ],
+  "device": "cuda:0",
+  "executed_at_utc": "2026-11-20T09:12:20.896330+00:00",
+  "elapsed_seconds": 176.98076330008917
+}
