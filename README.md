@@ -2,9 +2,11 @@
 
 Ứng dụng webcam nhận diện người đã đăng ký khi đeo khẩu trang, kính râm hoặc bị che một phần mặt; trả về **Unknown** khi không đủ bằng chứng. Nhánh chính: MTCNN + InceptionResnetV1 (facenet-pytorch). So sánh **B0** (pretrained), **B1** (fine-tune trên dữ liệu nền) và **B2** (fine-tune trên dữ liệu nền có thêm che nhân tạo).
 
-## Tiến độ (cập nhật 16/11/2026)
+## Tiến độ (cập nhật 20/11/2026)
 
-Bản này (`Đồ Án/Claude Works/TiepNoi_Buoc8_2026-11-16/`) nối tiếp bản bước 7 và thêm phần code của **bước 8**: app demo webcam, công cụ thu ảnh, notebook đo tốc độ, và notebook chọn ngưỡng + test webcam (viết sẵn, chờ ảnh). Kết quả quan trọng nhất của bước 7 vẫn giữ nguyên: **B1/B2 tốt trên ảnh tổng hợp nhưng kém B0 trên ảnh người thật**, nên demo dùng B0.
+**Kết quả chính (20/11/2026): chuỗi cải tiến B0 → B3** dựa trên bài báo Anwar & Raychowdhury 2020 (MaskTheFace/MFR2), xem [README_CAI_TIEN](ban_giao_nhom/cai_tien_B0_B3/README_CAI_TIEN.md). Trên khẩu trang thật (ROF), tỷ lệ nhận đúng người quen tăng qua từng bước: **B0 27,0% → B1 39,3% → B2 53,9% → B3 83,1%**; trên MFR2 độ chính xác 75,6% → 78,0% → 78,9% → **97,6%**. App demo mặc định dùng B3 và đổi được B0–B3 bằng phím 1–4.
+
+B1/B2 cũ (fine-tune trên ảnh tổng hợp DigiFace, lượt của Bảo và của Trí) giữ lại như thí nghiệm phụ: tốt trên DigiFace nhưng kém B0 trên ảnh thật (bước 7).
 
 **Việc còn lại là của người, không phải của code:** thu ảnh webcam ba phiên, chạy notebook webcam, chạy thử demo trước camera, làm báo cáo/slide.
 
@@ -17,6 +19,7 @@ Bản này (`Đồ Án/Claude Works/TiepNoi_Buoc8_2026-11-16/`) nối tiếp b�
 | 05. B0 + evaluator 1:N trên validation | ✅ Xong: `ban_giao_nhom/danh_gia_b0/B0_evaluator_validation.ipynb`. DIR tại FPIR 5% = **57,2%** (cách A) |
 | 06. Sinh che nhân tạo, train B1/B2 | ✅ Xong: augmentation, pilot 128 người (Codex) và **train full 1.600 người**: `ban_giao_nhom/huan_luyen/Train_full_B1_B2.ipynb`. DIR ảnh nền B1 = B2 = **93,5%**; DIR query che B1 56,5%, **B2 79,6%** |
 | 07. Khóa cấu hình/ngưỡng, test độc lập | ✅ Xong: `ban_giao_nhom/danh_gia_test/Danh_gia_doc_lap_B0_B1_B2.ipynb`. ROF Rank-1 B0 **92,8%**, B1 72,2%, B2 67,2%; MFR2 AUC B0 **0,991**, B1 0,935, B2 0,944 |
+| 07b. Chuỗi cải tiến B0 → B3 | ✅ Xong: `ban_giao_nhom/cai_tien_B0_B3/` (LFW + khẩu trang giả, B1 fine-tune, B2 template che, B3 + ArcFace). ROF khẩu trang DIR **27% → 39% → 54% → 83%** |
 | 08a. Đo tốc độ | ✅ Xong: `ban_giao_nhom/do_toc_do/Do_toc_do_pipeline.ipynb`. Một khung 640×480 mất ~57 ms trên GPU, ~64 ms trên CPU (16–17 khung/giây); 2/3 thời gian là detector |
 | 08b. App demo + công cụ thu ảnh | ✅ Code xong, đã kiểm trên ảnh/video: `ban_giao_nhom/demo/`. ⏳ Chưa chạy thử trước camera thật |
 | 08c. Ngưỡng và test webcam | ⏳ Notebook viết sẵn (`ban_giao_nhom/webcam/Hieu_chinh_va_test_webcam.ipynb`), **chờ nhóm thu ảnh** |
@@ -34,10 +37,11 @@ Mỗi branch là một mốc của dự án, branch sau chứa toàn bộ branch
 | `Model` | Evaluator 1:N và B0, sinh che nhân tạo, pilot B1/B2 (phần chung của hai lượt train) |
 | `Model-Bao` | Train full B1/B2 của Bảo (notebook, model đã lưu, `tai_model.py`) và đánh giá độc lập bước 7 |
 | `Model-Tri` | Train B1/B2 của Trí (script, log, model) và notebook so sánh hai lượt train |
-| `Web-Demo` | App demo webcam, công cụ thu ảnh, đo tốc độ, notebook ngưỡng + test webcam (nối tiếp `Model-Bao`) |
-| `main` | Gộp `Model-Bao`, `Model-Tri`, `Web-Demo` |
+| `Model-B0-B3` | Chuỗi cải tiến B0 → B3 theo bài báo Anwar & Raychowdhury 2020: dữ liệu LFW, train B1, chấm ROF/MFR2 (nối tiếp `Model`) |
+| `Web-Demo` | App demo webcam (B0–B3), công cụ thu ảnh, đo tốc độ, notebook ngưỡng + test webcam (gộp `Model-Bao` và `Model-B0-B3`) |
+| `main` | Gộp tất cả |
 
-Không có trên GitHub: ảnh gốc (`data/raw`, `data/benchmark_views`), ảnh webcam, cache, checkpoint để train tiếp, trang ảnh khuôn mặt để duyệt tay (contact sheets). Hai model B1/B2 của mỗi lượt train (~90 MB/file) có trong repo.
+Không có trên GitHub: ảnh gốc (`data/raw`, `data/benchmark_views`), LFW và model ArcFace (`data/external`, tải bằng `cai_tien_B0_B3/tai_du_lieu_ngoai.py`), ảnh webcam, cache, checkpoint để train tiếp, trang ảnh khuôn mặt để duyệt tay (contact sheets). Hai model B1/B2 của mỗi lượt train (~90 MB/file) có trong repo.
 
 ## Đọc theo thứ tự này
 
@@ -54,7 +58,8 @@ Không có trên GitHub: ảnh gốc (`data/raw`, `data/benchmark_views`), ảnh
 11. [Kết quả train full và model đã lưu](ban_giao_nhom/huan_luyen/README_TRAIN_FULL.md), [notebook train full B1/B2](ban_giao_nhom/huan_luyen/Train_full_B1_B2.ipynb). Kết quả chính thức của bước 6 nằm ở đây, không phải ở pilot.
 12. [Kết quả bước 7](ban_giao_nhom/danh_gia_test/README_DANH_GIA_TEST.md) và [notebook đánh giá độc lập](ban_giao_nhom/danh_gia_test/Danh_gia_doc_lap_B0_B1_B2.ipynb): DigiFace test, ROF, MFR2.
 13. [Model B1/B2 của Trí và so sánh hai lượt train](ban_giao_nhom/model_tri/README_MODEL_TRI.md): cùng evaluator, cùng kết luận (tốt trên DigiFace, kém B0 trên ảnh thật).
-14. Bước 8: [hướng dẫn demo và thu ảnh](ban_giao_nhom/demo/README_DEMO.md), `ban_giao_nhom/HUONG_DAN_THU_ANH_WEBCAM.md` (ai, bao nhiêu, ba phiên), [notebook đo tốc độ](ban_giao_nhom/do_toc_do/Do_toc_do_pipeline.ipynb), [notebook ngưỡng + test webcam](ban_giao_nhom/webcam/Hieu_chinh_va_test_webcam.ipynb).
+14. **[Chuỗi cải tiến B0 → B3](ban_giao_nhom/cai_tien_B0_B3/README_CAI_TIEN.md)**: kết quả chính, kèm tài liệu tham khảo.
+15. Bước 8: [hướng dẫn demo và thu ảnh](ban_giao_nhom/demo/README_DEMO.md), `ban_giao_nhom/HUONG_DAN_THU_ANH_WEBCAM.md` (ai, bao nhiêu, ba phiên), [notebook đo tốc độ](ban_giao_nhom/do_toc_do/Do_toc_do_pipeline.ipynb), [notebook ngưỡng + test webcam](ban_giao_nhom/webcam/Hieu_chinh_va_test_webcam.ipynb).
 
 Notebook đã lưu sẵn output, nên mở ra đọc được ngay mà không cần chạy lại hay tải dữ liệu.
 
@@ -187,7 +192,8 @@ ban_giao_nhom/
   danh_gia_test/README_DANH_GIA_TEST.md  kết quả bước 7 và cách đọc
   danh_gia_test/notebook_outputs/ bảng, hình, tóm tắt lượt chạy
   demo/nhan_dien.py               pipeline dùng chung: tìm mặt, embedding, gallery, cửa sổ hiển thị
-  demo/webcam_demo.py             app demo webcam (tên / Unknown / không thấy mặt, đổi B0/B1/B2)
+  demo/webcam_demo.py             app demo webcam (tên / Unknown / không thấy mặt, đổi B0–B3 bằng phím 1–4)
+  cai_tien_B0_B3/                 chuỗi cải tiến B0 → B3: notebook 01–03, cai_tien.py, model B1 LFW, file khóa, README_CAI_TIEN.md
   demo/thu_anh_webcam.py          thu ảnh webcam đúng cấu trúc ba phiên
   demo/README_DEMO.md             cách thu ảnh, chạy demo, giới hạn cần nói khi demo
   do_toc_do/Do_toc_do_pipeline.ipynb  bước 8A: thời gian từng đoạn trên GPU/CPU

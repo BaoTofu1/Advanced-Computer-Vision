@@ -2,12 +2,12 @@
 
 Chạy từ thư mục dự án (DoAn_CV_NangCao), bằng Python của môi trường dự án:
 
-    python ban_giao_nhom/demo/webcam_demo.py                       # webcam 0, model B0
-    python ban_giao_nhom/demo/webcam_demo.py --model B2 --threshold 0.60
+    python ban_giao_nhom/demo/webcam_demo.py                       # webcam 0, hệ thống B3
+    python ban_giao_nhom/demo/webcam_demo.py --model B0 --threshold 0.60
     python ban_giao_nhom/demo/webcam_demo.py --source thu_muc_anh --no-window --out ket_qua
 
 Phím khi cửa sổ đang mở:
-    q / Esc  thoát          1 / 2 / 3  đổi model B0 / B1 / B2
+    q / Esc  thoát          1 / 2 / 3 / 4  đổi hệ thống B0 / B1 / B2 / B3
     + / -    chỉnh ngưỡng   r          nạp lại gallery từ thư mục (reset)
 
 Mỗi khung hình được nhận diện độc lập, không làm mượt theo thời gian: mất mặt thì nhãn mất
@@ -30,21 +30,33 @@ from PIL import Image, ImageDraw, ImageFont
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 sys.path.insert(0, str(HERE))
-from nhan_dien import FacePipeline, Gallery, Viewer, read_gallery_folder, open_rgb, IMAGE_SUFFIXES, UNKNOWN  # noqa: E402
+sys.path.insert(0, str(HERE.parent / 'cai_tien_B0_B3'))
+from nhan_dien import Viewer, open_rgb, IMAGE_SUFFIXES  # noqa: E402
+from cai_tien import LadderRecognizer  # noqa: E402
 
-MODELS = ['B0', 'B1', 'B2']
+MODELS = LadderRecognizer.SYSTEMS
 COLORS = {'known': (46, 160, 67), 'unknown': (235, 104, 52), 'problem': (208, 59, 59), 'ink': (255, 255, 255)}
-STATUS_TEXT = {'no_face': 'Không tìm thấy mặt', 'multiple_faces': 'Nhiều mặt trong khung hình', 'invalid_boxes': 'Lỗi khung mặt'}
+STATUS_TEXT = {'no_face': 'Không tìm thấy mặt', 'multiple_faces': 'Nhiều mặt trong khung hình', 'empty_gallery': 'Gallery trống'}
 
 
-def default_thresholds():
-    """Ngưỡng webcam (nếu notebook webcam đã chọn), nếu chưa thì ngưỡng DigiFace validation (tạm)."""
+def webcam_thresholds():
+    """Ngưỡng chọn trên ảnh webcam phiên 2 (nếu notebook webcam đã chạy), nếu chưa thì dùng ngưỡng dev LFW."""
     webcam = HERE / 'nguong_webcam.json'
     if webcam.exists():
         data = json.loads(webcam.read_text(encoding='utf-8'))
-        return {m: float(data['thresholds'][m]) for m in MODELS if m in data['thresholds']}, 'webcam phiên 2'
-    lock = json.loads((HERE.parent / 'danh_gia_test/khoa_cau_hinh_buoc7.json').read_text(encoding='utf-8'))
-    return {m: float(lock['models'][m]['validation_threshold']) for m in MODELS}, 'tạm, từ DigiFace'
+        values = {m: float(data['thresholds'][m]) for m in MODELS if m in data['thresholds']}
+        if set(values) == set(MODELS):
+            return values, 'webcam phiên 2'
+    return {}, 'dev LFW'
+
+
+def read_people(folder):
+    """<folder>/<mã người>/*.jpg -> {mã người: [ảnh PIL]}."""
+    folder = Path(folder)
+    if not folder.is_dir():
+        return {}
+    return {p.name: [open_rgb(f) for f in sorted(p.iterdir()) if f.suffix.lower() in IMAGE_SUFFIXES]
+            for p in sorted(folder.iterdir()) if p.is_dir()}
 
 
 def font(size):
@@ -117,7 +129,7 @@ def annotate(image, result, info, reference):
 def main():
     ap = argparse.ArgumentParser(description='Demo nhận diện khuôn mặt qua webcam')
     ap.add_argument('--gallery', default=str(ROOT / 'data/raw/webcam/s1_dang_ky'), help='thư mục <mã người>/*.jpg đã đăng ký')
-    ap.add_argument('--model', default='B0', choices=MODELS)
+    ap.add_argument('--model', default='B3', choices=MODELS, help='hệ thống nhận diện (mặc định B3)')
     ap.add_argument('--threshold', type=float, help='ngưỡng cosine; mặc định lấy theo model')
     ap.add_argument('--source', default='0', help='số thứ tự webcam, file video hoặc thư mục ảnh')
     ap.add_argument('--device', help="'cuda:0' hoặc 'cpu'; mặc định tự chọn")
@@ -129,20 +141,21 @@ def main():
     ap.add_argument('--max-frames', type=int)
     args = ap.parse_args()
 
-    pipe = FacePipeline(args.model, device=args.device, min_face_size=args.min_face)
-    thresholds, threshold_source = default_thresholds()
+    thresholds, threshold_source = webcam_thresholds()
+    rec = LadderRecognizer(args.model, device=args.device, root=ROOT, thresholds=thresholds, min_face_size=args.min_face)
     if args.threshold is not None:
-        thresholds[args.model] = args.threshold
+        rec.thresholds[args.model] = args.threshold
         threshold_source = 'đặt tay'
 
-    crops, report = read_gallery_folder(pipe, args.gallery)
-    failed = [r for r in report if r['status'] != 'single_face']
-    print(f"Gallery: {sum(1 for c in crops.values() if c)} người / {len(report)} ảnh từ {args.gallery}")
-    for r in failed:
-        print(f"  bỏ qua {r['person']}/{r['file']}: {r['status']}")
-    if not any(crops.values()):
-        print('  Gallery trống: mọi khuôn mặt sẽ là Unknown. Thu ảnh đăng ký bằng thu_anh_webcam.py trước.')
-    galleries = {args.model: Gallery.from_crops(pipe, crops)}
+    def enroll():
+        report = rec.enroll(read_people(args.gallery))
+        print(f"Gallery: {len(rec.names)} người / {len(report)} ảnh từ {args.gallery}")
+        for r in report:
+            if r['status'] == 'fallback':
+                print(f"  bỏ qua {r['person']} ảnh {r['index'] + 1}: không thấy mặt")
+        if not rec.names:
+            print('  Gallery trống: mọi khuôn mặt sẽ là Unknown. Thu ảnh đăng ký bằng thu_anh_webcam.py trước.')
+    enroll()
 
     out_dir = Path(args.out) if args.out else None
     writer = None
@@ -158,29 +171,24 @@ def main():
     loop_times, n = [], 0
     last = time.perf_counter()
     for frame_id, image in frame_source(args.source, mirror=is_camera and not args.no_mirror):
-        gallery, threshold = galleries[pipe.model_name], thresholds[pipe.model_name]
-        if pipe.device.startswith('cuda'):
+        threshold = rec.threshold
+        if rec.device.startswith('cuda'):
             torch.cuda.synchronize()
         begin = time.perf_counter()
-        detector_status, crop, meta = pipe.prepare_face(image)
-        result = {'query_id': frame_id, 'detector_status': detector_status, 'n_faces': meta['n_faces'], 'boxes': meta['boxes'],
-                  'status': detector_status, 'predicted_identity': '', 'nearest_identity': '', 'top_score': '',
-                  'threshold': threshold, 'model': pipe.model_name}
-        reference = None
-        if detector_status == 'single_face':
-            name, score, nearest = gallery.predict(pipe.encode([crop])[0], threshold)
-            result.update(status='recognized' if name != UNKNOWN else 'unknown', predicted_identity=name,
-                          nearest_identity=nearest or '', top_score=score, box=meta['boxes'][0])
-            if name != UNKNOWN:
-                reference = gallery.references[name]
-        if pipe.device.startswith('cuda'):
+        r = rec.identify(image)
+        matched = r['status'] in ('recognized', 'unknown')
+        result = {'query_id': frame_id, 'detector_status': 'single_face' if matched else r['status'], 'n_faces': r['n_faces'],
+                  'boxes': r['boxes'], 'box': r['box'], 'status': r['status'], 'predicted_identity': r['name'],
+                  'nearest_identity': r['nearest'], 'top_score': r['score'] if matched else '', 'threshold': threshold, 'model': rec.system}
+        reference = rec.reference(r['name']) if r['status'] == 'recognized' else None
+        if rec.device.startswith('cuda'):
             torch.cuda.synchronize()
         result['latency_ms'] = 1000 * (time.perf_counter() - begin)
         now = time.perf_counter(); loop_times = (loop_times + [now - last])[-30:]; last = now
         if writer:
             writer.writerow({k: (f'{v:.6f}' if isinstance(v, float) else v) for k, v in result.items() if k in writer.fieldnames})
         if viewer or (out_dir and args.save_frames):
-            info = (f"{pipe.model_name} · ngưỡng {threshold:.3f} ({threshold_source}) · {len(gallery)} người · "
+            info = (f"{rec.system} · ngưỡng {threshold:.3f} ({threshold_source}) · {len(rec.names)} người · "
                     f"xử lý {result['latency_ms']:.0f} ms · {1 / max(np.mean(loop_times), 1e-6):.0f} FPS")
             shown = annotate(image, result, info, reference)
             if out_dir and args.save_frames:
@@ -194,22 +202,14 @@ def main():
                 for key in keys:
                     if key in ('q', 'Q', 'Escape'):
                         stop = True
-                    elif key in ('1', '2', '3'):
-                        name = MODELS[int(key) - 1]
-                        try:
-                            pipe.set_model(name)
-                            if name not in galleries:
-                                galleries[name] = Gallery.from_crops(pipe, crops)
-                        except FileNotFoundError:
-                            print(f'Chưa có file model {name} trong huan_luyen/checkpoints_full/')
+                    elif key in ('1', '2', '3', '4'):
+                        rec.set_system(MODELS[int(key) - 1])
                     elif key in ('plus', 'equal', 'KP_Add'):
-                        thresholds[pipe.model_name] = min(1.0, thresholds[pipe.model_name] + 0.01); threshold_source = 'đặt tay'
+                        rec.thresholds[rec.system] = min(1.0, rec.threshold + 0.01); threshold_source = 'đặt tay'
                     elif key in ('minus', 'underscore', 'KP_Subtract'):
-                        thresholds[pipe.model_name] = max(-1.0, thresholds[pipe.model_name] - 0.01); threshold_source = 'đặt tay'
+                        rec.thresholds[rec.system] = max(-1.0, rec.threshold - 0.01); threshold_source = 'đặt tay'
                     elif key in ('r', 'R'):
-                        crops, report = read_gallery_folder(pipe, args.gallery)
-                        galleries = {pipe.model_name: Gallery.from_crops(pipe, crops)}
-                        print(f'Đã nạp lại gallery: {len(galleries[pipe.model_name])} người')
+                        enroll()
                 if stop:
                     break
         n += 1

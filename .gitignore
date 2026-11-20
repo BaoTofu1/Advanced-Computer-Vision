@@ -26,3 +26,6 @@ ban_giao_nhom/webcam/notebook_outputs_dien_tap/
 # Môi trường
 .venv/
 .env
+
+# LFW và model ArcFace tải từ bên ngoài (xem cai_tien_B0_B3/README_CAI_TIEN.md)
+data/external/

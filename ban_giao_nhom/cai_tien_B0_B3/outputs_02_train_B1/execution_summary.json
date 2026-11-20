@@ -1,0 +1,58 @@
+{
+  "checks": "PASS",
+  "config": {
+    "epochs": 8,
+    "warmup_epochs": 1,
+    "batch_size": 32,
+    "lr_head": 0.001,
+    "lr_encoder": 2e-05,
+    "weight_decay": 0.0001,
+    "open_layers": [
+      "repeat_3",
+      "block8",
+      "last_linear",
+      "last_bn"
+    ],
+    "bn_running_stats": "frozen",
+    "occlusion_probability": 0.5,
+    "mask_share": 0.7,
+    "hflip_probability": 0.5,
+    "seed": 20261120,
+    "selection": "max mean dev Rank-1 over clean/mask/sunglasses; tie: earlier epoch"
+  },
+  "best_epoch": 5,
+  "B0_dev": {
+    "Rank-1 clean": 0.9947848761408083,
+    "DIR clean": 0.9778357235984355,
+    "FPIR clean": 0.05,
+    "Rank-1 mask": 0.758800521512386,
+    "DIR mask": 0.3559322033898305,
+    "FPIR mask": 0.021666666666666667,
+    "Rank-1 sunglasses": 0.848761408083442,
+    "DIR sunglasses": 0.4941329856584094,
+    "FPIR sunglasses": 0.018333333333333333,
+    "Rank-1 trung bình": 0.8674489352455454,
+    "ngưỡng": 0.6094330549240112
+  },
+  "B1_dev": {
+    "epoch": 5,
+    "stage": "fine",
+    "train_loss": 0.17848611891221797,
+    "train_acc": 0.9515265131226567,
+    "train_seconds": 8.274028799962252,
+    "Rank-1 clean": 0.9960886571056062,
+    "DIR clean": 0.9687092568448501,
+    "FPIR clean": 0.045,
+    "Rank-1 mask": 0.8526727509778357,
+    "DIR mask": 0.5319426336375489,
+    "FPIR mask": 0.021666666666666667,
+    "Rank-1 sunglasses": 0.9126466753585397,
+    "DIR sunglasses": 0.5710560625814863,
+    "FPIR sunglasses": 0.011666666666666667,
+    "Rank-1 trung bình": 0.9204693611473272,
+    "ngưỡng": 0.617703914642334
+  },
+  "checkpoint_sha256": "8707a792a32480d79daabd101209a2a2880e7d96fe2191aa4da98ccf40521ea5",
+  "executed_at_utc": "2026-11-20T10:08:14.765693+00:00",
+  "elapsed_seconds": 115.77737209992483
+}
