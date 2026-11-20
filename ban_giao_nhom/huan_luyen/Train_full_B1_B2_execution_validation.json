@@ -1,0 +1,13 @@
+{
+  "notebook": "Train_full_B1_B2.ipynb",
+  "output": "H:\\Nam tu\\Hoc Ki 1\\CV nang cao\\Đồ Án\\Claude Works\\TiepNoi_Buoc6_Full_2026-11-06\\DoAn_CV_NangCao\\ban_giao_nhom\\huan_luyen\\Train_full_B1_B2.ipynb",
+  "fresh_kernel": true,
+  "code_cells": 12,
+  "executed_cells": 12,
+  "errors": [],
+  "env": {
+    "CV_TRAIN_MODE": "auto",
+    "CV_FULL_SMOKE": null
+  },
+  "elapsed_seconds": 4465.7
+}

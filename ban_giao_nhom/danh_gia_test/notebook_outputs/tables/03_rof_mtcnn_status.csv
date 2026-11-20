@@ -1,0 +1,8 @@
+﻿role,condition,multiple_faces,no_face,single_face
+gallery,clean,0,14,418
+known_query,clean,2,94,2597
+known_query,masked,0,50,128
+known_query,sunglasses,3,85,1344
+unknown_query,clean,1,37,737
+unknown_query,masked,0,4,16
+unknown_query,sunglasses,1,25,250

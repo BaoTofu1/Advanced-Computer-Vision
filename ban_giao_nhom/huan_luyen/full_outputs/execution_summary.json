@@ -1,0 +1,134 @@
+{
+  "checks": "PASS",
+  "smoke_run": false,
+  "train_mode": "auto",
+  "runs": {
+    "B1": {
+      "mode": "resumed_after_epoch_2",
+      "best_epoch": 3,
+      "fingerprint": "401c7d1733a09adf1ede8df95b9bf58120125a73e20b7edca7be223b412939b9"
+    },
+    "B2": {
+      "mode": "trained_now",
+      "best_epoch": 4,
+      "fingerprint": "8342c9baec3f8850f973bbc6839b8eca71b11326fce43d760815fd400f01ed60"
+    }
+  },
+  "train_identities": 1600,
+  "train_images": 57600,
+  "monitor_images": 6400,
+  "validation_images": 8000,
+  "optimizer_steps_per_branch": 36000,
+  "skipped_steps": {
+    "B1": 18,
+    "B2": 19
+  },
+  "metrics": {
+    "B0": {
+      "threshold": 0.693074107170105,
+      "DIR": 0.5716216216216217,
+      "FPIR": 0.05,
+      "correct_accepted": 2115,
+      "unknown_accepted": 200,
+      "rank1": 0.8286486486486486,
+      "occluded_DIR": 0.2272972972972973,
+      "occluded_FPIR": 0.0275,
+      "occluded_correct_accepted": 841,
+      "occluded_rank1": 0.5651351351351351
+    },
+    "B1": {
+      "threshold": 0.5314350128173828,
+      "DIR": 0.9348648648648649,
+      "FPIR": 0.0485,
+      "correct_accepted": 3459,
+      "unknown_accepted": 194,
+      "rank1": 0.97,
+      "occluded_DIR": 0.5651351351351351,
+      "occluded_FPIR": 0.04325,
+      "occluded_correct_accepted": 2091,
+      "occluded_rank1": 0.7945945945945946
+    },
+    "B2": {
+      "threshold": 0.5252442359924316,
+      "DIR": 0.9348648648648649,
+      "FPIR": 0.0495,
+      "correct_accepted": 3459,
+      "unknown_accepted": 198,
+      "rank1": 0.9708108108108108,
+      "occluded_DIR": 0.7962162162162162,
+      "occluded_FPIR": 0.047,
+      "occluded_correct_accepted": 2946,
+      "occluded_rank1": 0.9124324324324324
+    }
+  },
+  "B2_minus_B1_DIR": {
+    "base": {
+      "point": 0.0,
+      "ci95": [
+        -0.010000000000000009,
+        0.010006756756756729
+      ]
+    },
+    "occluded": {
+      "point": 0.23108108108108105,
+      "ci95": [
+        0.2075608108108108,
+        0.2567567567567568
+      ]
+    }
+  },
+  "checkpoints": [
+    {
+      "nhánh": "B1",
+      "epoch": 3,
+      "file": "ban_giao_nhom/huan_luyen/checkpoints_full/B1_best_encoder.pt",
+      "MB": 89.9,
+      "sha256": "c68f5a1e9aa926448f263efe5b03cb25582ffea4e2681fac64b492a7a707871f",
+      "khớp số liệu lúc train": true,
+      "embed() khớp": true
+    },
+    {
+      "nhánh": "B2",
+      "epoch": 4,
+      "file": "ban_giao_nhom/huan_luyen/checkpoints_full/B2_best_encoder.pt",
+      "MB": 89.9,
+      "sha256": "b57e1c7309cb580edfd6ed18702e884192daa7da064a99a2dbdd541c1756d639",
+      "khớp số liệu lúc train": true,
+      "embed() khớp": true
+    }
+  ],
+  "pixel_cache": "matching_cache",
+  "raw_images_hashed_now": 72000,
+  "test_used": false,
+  "external_used": false,
+  "environment": {
+    "python": "3.11.9",
+    "torch": "2.2.2+cu121",
+    "facenet_pytorch": "2.6.0",
+    "numpy": "1.26.4",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "vram_total_MiB": 8188
+  },
+  "config": {
+    "version": "full_1600ids_v1",
+    "seed": 20261028,
+    "epochs": 5,
+    "batch_size": 8,
+    "strategy": "full_fine_tune_all_layers_batchnorm_train_mode",
+    "optimizer": "AdamW",
+    "lr_encoder": 1e-05,
+    "lr_head": 0.001,
+    "weight_decay": 0.0001,
+    "loss": "cross_entropy",
+    "amp": "fp16_autocast_gradscaler",
+    "gradient_clip": null,
+    "occlusion_probability_B2": 0.5,
+    "checkpoint_selection": "max_base_val_DIR_at_FPIR05; tie: occluded_DIR; tie: earlier_epoch",
+    "evaluation_batch_size": 256,
+    "bootstrap_repetitions": 2000,
+    "smoke_identities": null
+  },
+  "train_and_validation_seconds": 4326.4818541,
+  "executed_at_utc": "2026-11-06T12:14:57.486284+00:00",
+  "elapsed_seconds": 4451.6069959
+}

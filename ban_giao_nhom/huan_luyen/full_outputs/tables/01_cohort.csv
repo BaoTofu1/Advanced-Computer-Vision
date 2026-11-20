@@ -1,0 +1,6 @@
+﻿tập,ảnh,người
+train,57600,1600
+monitor (cùng người train),6400,1600
+validation gallery,300,100
+validation known query,3700,100
+validation unknown query,4000,100

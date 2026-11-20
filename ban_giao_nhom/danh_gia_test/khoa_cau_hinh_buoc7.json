@@ -1,0 +1,118 @@
+{
+  "version": "step7_independent_test_v1",
+  "models": {
+    "B0": {
+      "source": "facenet-pytorch InceptionResnetV1 pretrained=vggface2",
+      "validation_threshold": 0.693074107170105,
+      "validation_DIR": 0.5716216216216217
+    },
+    "B1": {
+      "file": "ban_giao_nhom/huan_luyen/checkpoints_full/B1_best_encoder.pt",
+      "sha256": "c68f5a1e9aa926448f263efe5b03cb25582ffea4e2681fac64b492a7a707871f",
+      "epoch": 3,
+      "run_fingerprint": "401c7d1733a09adf1ede8df95b9bf58120125a73e20b7edca7be223b412939b9",
+      "validation_threshold": 0.5314350128173828,
+      "validation_DIR": 0.9348648648648649
+    },
+    "B2": {
+      "file": "ban_giao_nhom/huan_luyen/checkpoints_full/B2_best_encoder.pt",
+      "sha256": "b57e1c7309cb580edfd6ed18702e884192daa7da064a99a2dbdd541c1756d639",
+      "epoch": 4,
+      "run_fingerprint": "8342c9baec3f8850f973bbc6839b8eca71b11326fce43d760815fd400f01ed60",
+      "validation_threshold": 0.5252442359924316,
+      "validation_DIR": 0.9348648648648649
+    }
+  },
+  "inputs_sha256": {
+    "digiface_roles": "b230104ba43a8060c948cba3c06473256d535efc7974930a90acaf7bc3c78a6a",
+    "rof_roles": "3540732b88c60d8842c454b9c84a44ece5f458f3e377b6ad924581f56aecc934",
+    "external_roles": "73f207608f596c5eb64a62e2767534ba8da9eb2f8059bd90119815acf7c31f7f",
+    "mfr2_pairs": "9394a8e1acb9a18769355c3d16f17c40c89685a846b449cc1a88f92a3cb2629f"
+  },
+  "preprocessing": {
+    "DigiFace": "A_direct_resize",
+    "MFR2": "A_direct_resize (ảnh gốc đã 160x160)",
+    "ROF": {
+      "A_direct_resize": "cách chính để so model",
+      "B_mtcnn_redetect": "cách của ứng dụng; không đúng một mặt = nhận sai"
+    },
+    "A": "EXIF, RGB (alpha -> nền trắng), PIL bilinear 160x160, (x-127.5)/128 một lần",
+    "B_config": {
+      "image_size": 160,
+      "margin": 0,
+      "min_face_size": 20,
+      "thresholds": [
+        0.6,
+        0.7,
+        0.7
+      ],
+      "factor": 0.709
+    },
+    "B_face_policy": "exactly_one; retain all failures; no substitution"
+  },
+  "digiface_test_occlusion": {
+    "augmentation": {
+      "version": "rectangle_occlusion_v1",
+      "seed": 20261105,
+      "size": 160,
+      "train_probability": 0.5,
+      "kinds": [
+        "eyes",
+        "lower",
+        "left",
+        "right"
+      ],
+      "boxes": {
+        "eyes": [
+          8,
+          36,
+          152,
+          82
+        ],
+        "lower": [
+          12,
+          82,
+          148,
+          144
+        ],
+        "left": [
+          4,
+          16,
+          56,
+          144
+        ],
+        "right": [
+          104,
+          16,
+          156,
+          144
+        ]
+      },
+      "jitter_pixels": 4,
+      "fill_values": [
+        32,
+        96,
+        160,
+        224
+      ],
+      "area_denominator": "whole_160x160_frame_not_face_area",
+      "normalization_after_augmentation": "(pixel_0_255 - 127.5)/128 exactly once",
+      "val_policy": "one_fixed_forced_occlusion_per_query; gallery_unchanged",
+      "test_policy": "same_predeclared_algorithm; materialize_only_after_final_config_lock"
+    },
+    "implementation_sha256": "753125a67b989139ae8a90792829e8129b8933db0f1d42ed93741164c7e76523",
+    "spec": "make_spec(image_id, -1, 'test', force=True), chỉ query; gallery không che"
+  },
+  "rof_roles": "gallery (3 ảnh rõ/người, 144 người quen), known_query, unknown_query (36 người lạ); bỏ ineligible và gallery_group_reserve",
+  "metrics": {
+    "open_set": "template = trung bình embedding L2 rồi chuẩn hóa lại; DIR = known query top-1 đúng và score >= ngưỡng; FPIR = unknown query có score >= ngưỡng; người không đăng ký được vẫn ở mẫu số",
+    "rof_det_point": "ngưỡng chọn trên toàn bộ unknown ROF sao cho FPIR <= 5%, DIR lớn nhất; chỉ để so model",
+    "mfr2": "cosine từng cặp; AUC, EER, accuracy/TAR/FAR tại ngưỡng validation",
+    "bootstrap": {
+      "repetitions": 2000,
+      "seed": 20261028,
+      "unit": "người (known/unknown lấy mẫu riêng); MFR2: cặp"
+    }
+  },
+  "locked_at_utc": "2026-11-11T06:56:59.351389+00:00"
+}

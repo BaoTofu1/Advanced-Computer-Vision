@@ -1,0 +1,13 @@
+﻿bộ,vai trò,điều kiện,ảnh,người
+DigiFace test,gallery,synthetic_unannotated,300,100
+DigiFace test,known_query,synthetic_unannotated,3700,100
+DigiFace test,unknown_query,synthetic_unannotated,4000,100
+ROF,gallery,clean,432,144
+ROF,known_query,clean,2693,144
+ROF,known_query,masked,178,47
+ROF,known_query,sunglasses,1432,126
+ROF,unknown_query,clean,775,36
+ROF,unknown_query,masked,20,8
+ROF,unknown_query,sunglasses,276,29
+DigiFace test,query che (tạo thêm),hình chữ nhật,7700,200
+MFR2,ảnh trong 848 cặp (424 cùng người),khẩu trang / không,269,53

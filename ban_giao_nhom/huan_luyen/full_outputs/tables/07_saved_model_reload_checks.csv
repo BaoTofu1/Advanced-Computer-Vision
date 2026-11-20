@@ -1,0 +1,3 @@
+﻿nhánh,epoch,file,MB,sha256,khớp số liệu lúc train,embed() khớp
+B1,3,ban_giao_nhom/huan_luyen/checkpoints_full/B1_best_encoder.pt,89.900000000000006,c68f5a1e9aa926448f263efe5b03cb25582ffea4e2681fac64b492a7a707871f,True,True
+B2,4,ban_giao_nhom/huan_luyen/checkpoints_full/B2_best_encoder.pt,89.900000000000006,b57e1c7309cb580edfd6ed18702e884192daa7da064a99a2dbdd541c1756d639,True,True
