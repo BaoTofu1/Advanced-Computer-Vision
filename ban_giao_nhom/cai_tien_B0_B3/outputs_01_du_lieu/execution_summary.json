@@ -1,0 +1,34 @@
+{
+  "checks": "PASS",
+  "lfw_images": 13233,
+  "removed_overlap_identities": 62,
+  "split": [
+    {
+      "role": "dev_gallery",
+      "ảnh": 348,
+      "người": 174
+    },
+    {
+      "role": "dev_known_query",
+      "ảnh": 767,
+      "người": 174
+    },
+    {
+      "role": "dev_unknown_query",
+      "ảnh": 600,
+      "người": 600
+    },
+    {
+      "role": "train",
+      "ảnh": 3734,
+      "người": 406
+    }
+  ],
+  "detections": {
+    "one_face": 10742,
+    "center_face": 2105
+  },
+  "seed": 20261120,
+  "executed_at_utc": "2026-11-20T10:03:35.579348+00:00",
+  "elapsed_seconds": 11.793791899923235
+}

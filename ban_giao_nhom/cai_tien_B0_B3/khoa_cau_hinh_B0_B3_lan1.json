@@ -1,0 +1,54 @@
+{
+  "version": "B0_B3_v1",
+  "paper": "Anwar & Raychowdhury 2020, arXiv:2008.11104",
+  "systems": {
+    "B0": {
+      "threshold": 0.6094330549240112,
+      "w_facenet": null,
+      "calibration_variants": [
+        "clean"
+      ]
+    },
+    "B1": {
+      "threshold": 0.617703914642334,
+      "w_facenet": null,
+      "calibration_variants": [
+        "clean"
+      ]
+    },
+    "B2": {
+      "threshold": 0.6798244714736938,
+      "w_facenet": null,
+      "calibration_variants": [
+        "clean",
+        "mask",
+        "sunglasses"
+      ]
+    },
+    "B3": {
+      "threshold": 0.35882312059402466,
+      "w_facenet": 0.25,
+      "calibration_variants": [
+        "clean",
+        "mask",
+        "sunglasses"
+      ]
+    }
+  },
+  "models": {
+    "B1_LFW_mask_encoder": "8280b54eba784d1269834dd356760d42f52c55e87abe031d66c41f8a75c813d3",
+    "arcface_w600k_r50": "4c06341c33c2ca1f86781dab0e829f88ad5b64be9fba56e56bc9ebdefc619e43",
+    "B0": "facenet-pytorch vggface2"
+  },
+  "detection": "MTCNN bước 4/7; nhiều mặt -> mặt gần tâm; không thấy -> nguyên ảnh + mốc chuẩn",
+  "gallery_variants_B2_B3": [
+    "clean",
+    "mask",
+    "sunglasses"
+  ],
+  "occlusion_seed": "seed_of(SEED, \"test-occ\", image_id)",
+  "seed": 20261120,
+  "lfw_split_sha256": "9efb9e094d5990b3e8c6a12afc4f76a3b9f6645e2554ebfd06e045898fe3f99b",
+  "metrics": "DIR/FPIR tại ngưỡng khóa, Rank-1; MFR2: AUC, EER, accuracy tại ngưỡng khóa; bootstrap theo người 2.000 lần",
+  "locked_at_utc": "2026-11-20T09:55:35.275314+00:00"
+}
