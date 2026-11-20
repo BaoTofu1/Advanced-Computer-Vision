@@ -1,0 +1,28 @@
+# Ảnh gốc và dữ liệu cá nhân: không đưa lên GitHub (xem README, mục "Dữ liệu ảnh gốc")
+data/raw/
+data/benchmark_views/
+data/raw/webcam/
+
+# Cache tạo lại được, checkpoint để train tiếp, file tạm
+**/cache/
+**/*_resume.pt
+**/*.tmp
+**/__pycache__/
+*.pyc
+.ipynb_checkpoints/
+runs/
+tools/jupyter/
+
+# Trang ảnh khuôn mặt để duyệt tay (ảnh người thật từ ROF/MFR2), tạo lại bằng notebook QA/quyết định
+ban_giao_nhom/qa/notebook_outputs/contact_sheets/
+ban_giao_nhom/quyet_dinh_nhom/notebook_outputs/contact_sheets/
+
+# Pixel pilot tạo lại bằng notebook preprocessing
+ban_giao_nhom/preprocessing/notebook_outputs/pilot_prepared_pixels.npz
+
+# Kết quả diễn tập và ngưỡng webcam phụ thuộc dữ liệu cá nhân của nhóm
+ban_giao_nhom/webcam/notebook_outputs_dien_tap/
+
+# Môi trường
+.venv/
+.env

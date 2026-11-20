@@ -1,0 +1,16 @@
+{
+  "purpose": "Functional smoke test only; not benchmark, model comparison, or threshold tuning",
+  "source": "MFR2 mfr2_labels.txt folder identity and mask-type metadata",
+  "reference": "BenAffleck/BenAffleck_0003.png",
+  "reference_source_condition": "no-mask",
+  "ordered_queries": [
+    {"path": "BenAffleck/BenAffleck_0003.png", "case": "self image", "source_condition": "no-mask"},
+    {"path": "BenAffleck/BenAffleck_0007.png", "case": "same folder identity, different clear image", "source_condition": "no-mask"},
+    {"path": "BenAffleck/BenAffleck_0004.png", "case": "same folder identity, masked image", "source_condition": "surgical_black"},
+    {"path": "AhmadAli/AhmadAli_0002.png", "case": "different folder identity", "source_condition": "no-mask"},
+    {"path": "missing_query_image.jpg", "case": "intentionally nonexistent image", "expected_error": "image_read_failed"}
+  ],
+  "output": "b0_smoke_real.json",
+  "expected_exit_code": 1,
+  "notes": ["No raw images copied into this code package", "Identity labels not manually verified against facial identity", "Cosine is not an identity probability"]
+}

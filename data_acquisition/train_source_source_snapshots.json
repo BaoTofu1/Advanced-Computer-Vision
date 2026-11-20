@@ -1,0 +1,26 @@
+[
+  {
+    "path": "train_source_insightface_datasets_README.md",
+    "url": "https://raw.githubusercontent.com/deepinsight/insightface/master/recognition/_datasets_/README.md",
+    "sha256": "f372a49ace875aa42d202d5411b7bcd2901c1e3f15304a397d46cbc45487efc0",
+    "bytes": 5723
+  },
+  {
+    "path": "train_source_insightface_README.md",
+    "url": "https://raw.githubusercontent.com/deepinsight/insightface/master/README.md",
+    "sha256": "1846967d19f2b19845b967e14715c162881e7598360e23ab6646a47c88667758",
+    "bytes": 16825
+  },
+  {
+    "path": "train_source_digiface_README.md",
+    "url": "https://raw.githubusercontent.com/microsoft/DigiFace1M/main/README.md",
+    "sha256": "710b50a4fba603269e335dfcd88d95e4afbba9ea3e2911a92eb4130c7593f767",
+    "bytes": 3004
+  },
+  {
+    "path": "train_source_digiface_LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/microsoft/DigiFace1M/main/LICENSE",
+    "sha256": "4ca5e434d1faf7e964b14e4a2508ae33ef5447ecd84a9a9f6e25767a64498595",
+    "bytes": 3789
+  }
+]

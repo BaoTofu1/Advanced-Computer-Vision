@@ -1,0 +1,86 @@
+phash 20000 pairs 19
+phash 40000 pairs 77
+phash 60000 pairs 127
+phash 80000 pairs 246
+{
+  "seed": 20261021,
+  "sources": [
+    {
+      "source": "DigiFace",
+      "images": 80000,
+      "identities": 2000,
+      "images_min": 40,
+      "images_median": 40.0,
+      "images_max": 40,
+      "ids_lt5": 0,
+      "ids_lt10": 0,
+      "read_failures": 0
+    },
+    {
+      "source": "MFR2",
+      "images": 269,
+      "identities": 53,
+      "images_min": 2,
+      "images_median": 5.0,
+      "images_max": 10,
+      "ids_lt5": 19,
+      "ids_lt10": 52,
+      "read_failures": 0
+    },
+    {
+      "source": "ROF",
+      "images": 6711,
+      "identities": 182,
+      "images_min": 2,
+      "images_median": 30.0,
+      "images_max": 95,
+      "ids_lt5": 1,
+      "ids_lt10": 1,
+      "read_failures": 0
+    }
+  ],
+  "conditions": [
+    {
+      "source": "DigiFace",
+      "condition": "synthetic_unannotated",
+      "n": 80000
+    },
+    {
+      "source": "MFR2",
+      "condition": "clean",
+      "n": 98
+    },
+    {
+      "source": "MFR2",
+      "condition": "masked",
+      "n": 171
+    },
+    {
+      "source": "ROF",
+      "condition": "clean",
+      "n": 4356
+    },
+    {
+      "source": "ROF",
+      "condition": "masked",
+      "n": 264
+    },
+    {
+      "source": "ROF",
+      "condition": "sunglasses",
+      "n": 2091
+    }
+  ],
+  "total_images": 86980,
+  "near_duplicate_candidates": 488,
+  "duplicate_groups": 10,
+  "quality_review_queue": 4381,
+  "inventory_sha256": "09366d3e09db6176351a9f30aa299444fe36acf0a6bedaa7a11678842d70b64d",
+  "limits": [
+    "unverified source labels",
+    "unknown sessions and demographics",
+    "pretraining overlap not verified",
+    "no split assigned",
+    "no model preprocessing or training performed"
+  ]
+}

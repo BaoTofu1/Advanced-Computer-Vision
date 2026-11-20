@@ -1,0 +1,14 @@
+{
+  "no_face": "PASS: count rule; SHA256; grayscale converted to RGB",
+  "multiple_faces": "PASS: count rule; SHA256; grayscale converted to RGB",
+  "unreadable_image": "PASS",
+  "syntax": "PASS",
+  "cli_help": "PASS",
+  "missing_dependency_json_exit2": "PASS",
+  "overwrite_input_rejected_exit2": "PASS",
+  "real_inference": "PASS: CUDA RTX4060, torch2.2.2+cu121, facenet-pytorch2.6.0;4/4 valid queries scored, self cosine within1e-5 of1; missing file error exit1",
+  "real_inference_output": "b0_smoke_real.json",
+  "latency_benchmark": "NOT RUN",
+  "tiny_image_guard": "PASS: generated temporary16x22RGB image; image_too_small before detect; face_count null; exit1; output tiny_image_guard.json; temporary image removed",
+  "script_version": "1.0.1"
+}

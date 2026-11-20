@@ -1,0 +1,36 @@
+{
+  "completed_at_utc": "2026-10-20T18:10:18.062292+00:00",
+  "policy": "One pass; four workers; fetch timeout15; max80; exclude auth/rate-limit/DNS/TLS; HTTP525/526 excluded",
+  "retry_urls": 66,
+  "new_valid_originals": 0,
+  "new_valid_crops": 0,
+  "current_valid_originals": 6296,
+  "current_valid_crops": 6711,
+  "unretried_rows_unchanged": true,
+  "initial_retry_errors": {
+    "TimeoutError: timed out": 1,
+    "HTTPError: HTTP Error 503: Service Unavailable": 14,
+    "TimeoutError: The read operation timed out": 23,
+    "HTTPError: HTTP Error 502: Bad Gateway": 7,
+    "HTTPError: HTTP Error 520: <none>": 5,
+    "HTTPError: HTTP Error 530: <none>": 1,
+    "URLError: <urlopen error timed out>": 10,
+    "HTTPError: HTTP Error 500: Internal Server Error": 2,
+    "RemoteDisconnected: Remote end closed connection without response": 2,
+    "HTTPError: HTTP Error 523: <none>": 1
+  },
+  "remaining_retry_errors": {
+    "HTTPError: HTTP Error 503: Service Unavailable": 14,
+    "HTTPError: HTTP Error 502: Bad Gateway": 7,
+    "HTTPError: HTTP Error 520: <none>": 5,
+    "TimeoutError: timed out": 1,
+    "TimeoutError: The read operation timed out": 19,
+    "HTTPError: HTTP Error 404: Not Found": 4,
+    "HTTPError: HTTP Error 530: <none>": 1,
+    "URLError: <urlopen error timed out>": 10,
+    "HTTPError: HTTP Error 500: Internal Server Error": 2,
+    "RemoteDisconnected: Remote end closed connection without response": 2,
+    "HTTPError: HTTP Error 523: <none>": 1
+  },
+  "http429_deferred": 152
+}

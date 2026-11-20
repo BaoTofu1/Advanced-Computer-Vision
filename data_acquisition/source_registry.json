@@ -1,0 +1,38 @@
+{
+  "report_date_local": "2026-10-21",
+  "report_timezone": "Asia/Saigon",
+  "metadata_retrieved_utc": "2026-10-20T18:09:31.993803+00:00",
+  "sources": [
+    {
+      "repository": "ekremerakin/RealWorldOccludedFaces",
+      "branch": "main",
+      "head_at_audit": "c927509a039ad9e74d15705f1af99a6a7ae7d3b7",
+      "url": "https://github.com/ekremerakin/RealWorldOccludedFaces/commit/c927509a039ad9e74d15705f1af99a6a7ae7d3b7",
+      "note": "Metadata checked at audit; downloaded archive bytes separately fingerprinted."
+    },
+    {
+      "repository": "aqeelanwar/MaskTheFace",
+      "branch": "master",
+      "head_at_audit": "caf4d6ca2328f6f97c5f1947db4f03b3197fb62a",
+      "url": "https://github.com/aqeelanwar/MaskTheFace/commit/caf4d6ca2328f6f97c5f1947db4f03b3197fb62a",
+      "note": "Metadata checked at audit; downloaded archive bytes separately fingerprinted."
+    },
+    {
+      "repository": "microsoft/DigiFace1M",
+      "branch": "main",
+      "head_at_audit": "1d173f305de9afefafb8589ce8e726ec685863e5",
+      "url": "https://github.com/microsoft/DigiFace1M/commit/1d173f305de9afefafb8589ce8e726ec685863e5",
+      "note": "Metadata checked at audit; downloaded archive bytes separately fingerprinted."
+    },
+    {
+      "repository": "timesler/facenet-pytorch",
+      "branch": "master",
+      "head_at_audit": "787da06156087cd6b616fe6608213722bddc30cd",
+      "url": "https://github.com/timesler/facenet-pytorch/commit/787da06156087cd6b616fe6608213722bddc30cd",
+      "note": "Metadata checked at audit; downloaded archive bytes separately fingerprinted."
+    }
+  ],
+  "rof_repo_archive_sha256": "f59ee74c8bc253b3224a93c5f5002cbe3b4f299819d61d26e8b5361356776121",
+  "code_does_not_execute_downloaded_scripts": true,
+  "license_scope_note": "Repository code license does not establish blanket rights to externally hosted images; retain source terms/attribution."
+}

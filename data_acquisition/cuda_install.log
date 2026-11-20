@@ -1,0 +1,15 @@
+Looking in indexes: https://download.pytorch.org/whl/cu121
+Collecting torch==2.2.2+cu121
+  Using cached https://download-r2.pytorch.org/whl/cu121/torch-2.2.2%2Bcu121-cp311-cp311-win_amd64.whl (2454.8 MB)
+Collecting torchvision==0.17.2+cu121
+  Using cached https://download-r2.pytorch.org/whl/cu121/torchvision-0.17.2%2Bcu121-cp311-cp311-win_amd64.whl (5.7 MB)
+Installing collected packages: torchvision, torch
+  Attempting uninstall: torchvision
+    Found existing installation: torchvision 0.17.2
+    Uninstalling torchvision-0.17.2:
+      Successfully uninstalled torchvision-0.17.2
+  Attempting uninstall: torch
+    Found existing installation: torch 2.2.2
+    Uninstalling torch-2.2.2:
+      Successfully uninstalled torch-2.2.2
+Successfully installed torch-2.2.2+cu121 torchvision-0.17.2+cu121

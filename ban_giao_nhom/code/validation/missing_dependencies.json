@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "script_version": "1.0.0",
+  "created_utc": "2026-10-20T17:50:45.971002+00:00",
+  "baseline": "B0",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "facenet-pytorch": null,
+      "torch": null,
+      "torchvision": null,
+      "numpy": "2.3.5",
+      "Pillow": "12.3.0"
+    }
+  },
+  "device_requested": "cpu",
+  "device_used": null,
+  "config": {
+    "detector": "MTCNN",
+    "keep_all": true,
+    "image_size": 160,
+    "margin": 0,
+    "min_face_size": 20,
+    "detector_stage_thresholds": [
+      0.6,
+      0.7,
+      0.7
+    ],
+    "factor": 0.709,
+    "post_process": true,
+    "standardization": "(RGB_uint8_float - 127.5) / 128.0",
+    "crop": "MTCNN box crop and resize; no landmark similarity alignment",
+    "encoder": "InceptionResnetV1",
+    "pretrained": "vggface2",
+    "classify": false,
+    "embedding_dim": 512,
+    "embedding_normalization": "L2",
+    "score": "dot product of L2-normalized embeddings (cosine), range [-1, 1]",
+    "identity_threshold": null,
+    "torch_home": null
+  },
+  "reference": {
+    "path": "H:\\Nam tu\\Hoc Ki 1\\CV nang cao\\Đồ Án\\ban_giao_nhom\\code\\validation\\ảnh mẫu chưa tồn tại.jpg",
+    "status": "not_processed",
+    "sha256": null,
+    "original_mode": null,
+    "size_after_exif": null,
+    "face_count": null,
+    "boxes_xyxy": [],
+    "detector_scores": [],
+    "embedding_dim": null,
+    "error": {
+      "code": "setup_failed",
+      "message": "See fatal_error; this image was not processed."
+    }
+  },
+  "queries": [
+    {
+      "path": "H:\\Nam tu\\Hoc Ki 1\\CV nang cao\\Đồ Án\\ban_giao_nhom\\code\\validation\\ảnh kính.jpg",
+      "status": "not_processed",
+      "sha256": null,
+      "original_mode": null,
+      "size_after_exif": null,
+      "face_count": null,
+      "boxes_xyxy": [],
+      "detector_scores": [],
+      "embedding_dim": null,
+      "error": {
+        "code": "setup_failed",
+        "message": "See fatal_error; this image was not processed."
+      },
+      "cosine_similarity": null,
+      "comparison_error": null
+    },
+    {
+      "path": "H:\\Nam tu\\Hoc Ki 1\\CV nang cao\\Đồ Án\\ban_giao_nhom\\code\\validation\\ảnh khẩu trang.jpg",
+      "status": "not_processed",
+      "sha256": null,
+      "original_mode": null,
+      "size_after_exif": null,
+      "face_count": null,
+      "boxes_xyxy": [],
+      "detector_scores": [],
+      "embedding_dim": null,
+      "error": {
+        "code": "setup_failed",
+        "message": "See fatal_error; this image was not processed."
+      },
+      "cosine_similarity": null,
+      "comparison_error": null
+    }
+  ],
+  "summary": {
+    "query_total": 2,
+    "query_embedding_ok": 0,
+    "query_scored": 0,
+    "query_failed_or_not_processed": 2,
+    "exit_code": 2
+  },
+  "fatal_error": {
+    "code": "environment_or_model_failed",
+    "message": "ModuleNotFoundError: No module named 'torch'"
+  },
+  "notes": [
+    "Cosine similarity is not an identity probability.",
+    "Detector scores describe face detection, not identity confidence.",
+    "This compares pairs; it does not measure benchmark accuracy or implement open-set 1:N.",
+    "Pretraining may overlap benchmark identities; this script cannot audit pretraining data."
+  ]
+}

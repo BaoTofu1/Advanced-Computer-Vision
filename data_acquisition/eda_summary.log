@@ -1,0 +1,60 @@
+phash 20000 pairs 19
+phash 40000 pairs 77
+phash 60000 pairs 127
+phash 80000 pairs 246
+{
+  "seed": 20261021,
+  "sources": [
+    {
+      "source": "DigiFace",
+      "images": 80000,
+      "identities": 2000,
+      "images_min": 40,
+      "images_median": 40.0,
+      "images_max": 40,
+      "ids_lt5": 0,
+      "ids_lt10": 0,
+      "read_failures": 0
+    },
+    {
+      "source": "MFR2",
+      "images": 269,
+      "identities": 53,
+      "images_min": 2,
+      "images_median": 5.0,
+      "images_max": 10,
+      "ids_lt5": 19,
+      "ids_lt10": 52,
+      "read_failures": 0
+    }
+  ],
+  "conditions": [
+    {
+      "source": "DigiFace",
+      "condition": "synthetic_unannotated",
+      "n": 80000
+    },
+    {
+      "source": "MFR2",
+      "condition": "clean",
+      "n": 98
+    },
+    {
+      "source": "MFR2",
+      "condition": "masked",
+      "n": 171
+    }
+  ],
+  "total_images": 80269,
+  "near_duplicate_candidates": 246,
+  "duplicate_groups": 0,
+  "quality_review_queue": 2375,
+  "inventory_sha256": "e133c93e2fa4e04b30f4e8e9b0ac5fa3a5abb72942cd656c07b239625eab8677",
+  "limits": [
+    "unverified source labels",
+    "unknown sessions and demographics",
+    "pretraining overlap not verified",
+    "no split assigned",
+    "no model preprocessing or training performed"
+  ]
+}

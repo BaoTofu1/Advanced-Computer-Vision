@@ -1,0 +1,207 @@
+{
+  "schema_version": "1.0",
+  "script_version": "1.0.1",
+  "created_utc": "2026-10-20T18:15:52.690771+00:00",
+  "baseline": "B0",
+  "environment": {
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "packages": {
+      "facenet-pytorch": "2.6.0",
+      "torch": "2.2.2+cu121",
+      "torchvision": "0.17.2+cu121",
+      "numpy": "1.26.4",
+      "Pillow": "10.2.0"
+    },
+    "cuda_runtime": "12.1",
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU"
+  },
+  "device_requested": "cuda",
+  "device_used": "cuda",
+  "config": {
+    "detector": "MTCNN",
+    "keep_all": true,
+    "image_size": 160,
+    "margin": 0,
+    "min_face_size": 20,
+    "detector_stage_thresholds": [
+      0.6,
+      0.7,
+      0.7
+    ],
+    "tiny_image_policy": "Reject image if min(width,height) < min_face_size; no automatic upscaling",
+    "factor": 0.709,
+    "post_process": true,
+    "standardization": "(RGB_uint8_float - 127.5) / 128.0",
+    "crop": "MTCNN box crop and resize; no landmark similarity alignment",
+    "encoder": "InceptionResnetV1",
+    "pretrained": "vggface2",
+    "classify": false,
+    "embedding_dim": 512,
+    "embedding_normalization": "L2",
+    "score": "dot product of L2-normalized embeddings (cosine), range [-1, 1]",
+    "identity_threshold": null,
+    "torch_home": null
+  },
+  "reference": {
+    "path": "H:\\Nam tu\\Hoc Ki 1\\CV nang cao\\Đồ Án\\data\\raw\\mfr2\\mfr2\\BenAffleck\\BenAffleck_0003.png",
+    "status": "ok",
+    "sha256": "d21da91d55f6f43b64554b6aa2e17c11a910a320ce84c18bb0c762e2d04c5e0d",
+    "original_mode": "RGB",
+    "size_after_exif": [
+      160,
+      160
+    ],
+    "face_count": 1,
+    "boxes_xyxy": [
+      [
+        34.94428253173828,
+        23.163799285888672,
+        122.7783203125,
+        143.79095458984375
+      ]
+    ],
+    "detector_scores": [
+      0.999904990196228
+    ],
+    "embedding_dim": 512,
+    "error": null
+  },
+  "queries": [
+    {
+      "path": "H:\\Nam tu\\Hoc Ki 1\\CV nang cao\\Đồ Án\\data\\raw\\mfr2\\mfr2\\BenAffleck\\BenAffleck_0003.png",
+      "status": "ok",
+      "sha256": "d21da91d55f6f43b64554b6aa2e17c11a910a320ce84c18bb0c762e2d04c5e0d",
+      "original_mode": "RGB",
+      "size_after_exif": [
+        160,
+        160
+      ],
+      "face_count": 1,
+      "boxes_xyxy": [
+        [
+          34.94428253173828,
+          23.163799285888672,
+          122.7783203125,
+          143.79095458984375
+        ]
+      ],
+      "detector_scores": [
+        0.999904990196228
+      ],
+      "embedding_dim": 512,
+      "error": null,
+      "cosine_similarity": 1.0,
+      "comparison_error": null
+    },
+    {
+      "path": "H:\\Nam tu\\Hoc Ki 1\\CV nang cao\\Đồ Án\\data\\raw\\mfr2\\mfr2\\BenAffleck\\BenAffleck_0007.png",
+      "status": "ok",
+      "sha256": "a76e2998eed013528125711528ac18d3efa1cfa01c84ae323f6c342684b76bbb",
+      "original_mode": "RGB",
+      "size_after_exif": [
+        160,
+        160
+      ],
+      "face_count": 1,
+      "boxes_xyxy": [
+        [
+          43.071205139160156,
+          35.930908203125,
+          128.56529235839844,
+          150.10987854003906
+        ]
+      ],
+      "detector_scores": [
+        0.9999569654464722
+      ],
+      "embedding_dim": 512,
+      "error": null,
+      "cosine_similarity": 0.8152379393577576,
+      "comparison_error": null
+    },
+    {
+      "path": "H:\\Nam tu\\Hoc Ki 1\\CV nang cao\\Đồ Án\\data\\raw\\mfr2\\mfr2\\BenAffleck\\BenAffleck_0004.png",
+      "status": "ok",
+      "sha256": "055ef755e7a5240db7aef9e9d5d389d3f0b5c92b387df1ad030e5ea05da50615",
+      "original_mode": "RGB",
+      "size_after_exif": [
+        160,
+        160
+      ],
+      "face_count": 1,
+      "boxes_xyxy": [
+        [
+          38.779964447021484,
+          25.916370391845703,
+          131.36251831054688,
+          135.17173767089844
+        ]
+      ],
+      "detector_scores": [
+        0.9999698400497437
+      ],
+      "embedding_dim": 512,
+      "error": null,
+      "cosine_similarity": 0.4764680862426758,
+      "comparison_error": null
+    },
+    {
+      "path": "H:\\Nam tu\\Hoc Ki 1\\CV nang cao\\Đồ Án\\data\\raw\\mfr2\\mfr2\\AhmadAli\\AhmadAli_0002.png",
+      "status": "ok",
+      "sha256": "97cda9d0cf8679b47f54ffae81efcea8df329fe03f6e11f0501a4fc7b47bfdc5",
+      "original_mode": "RGB",
+      "size_after_exif": [
+        160,
+        160
+      ],
+      "face_count": 1,
+      "boxes_xyxy": [
+        [
+          34.40617370605469,
+          33.21052551269531,
+          127.1342544555664,
+          145.3341064453125
+        ]
+      ],
+      "detector_scores": [
+        1.0
+      ],
+      "embedding_dim": 512,
+      "error": null,
+      "cosine_similarity": -0.04287663847208023,
+      "comparison_error": null
+    },
+    {
+      "path": "H:\\Nam tu\\Hoc Ki 1\\CV nang cao\\Đồ Án\\ban_giao_nhom\\code\\validation\\missing_query_image.jpg",
+      "status": "error",
+      "sha256": null,
+      "original_mode": null,
+      "size_after_exif": null,
+      "face_count": null,
+      "boxes_xyxy": [],
+      "detector_scores": [],
+      "embedding_dim": null,
+      "error": {
+        "code": "image_read_failed",
+        "message": "FileNotFoundError: [Errno 2] No such file or directory: 'H:\\\\Nam tu\\\\Hoc Ki 1\\\\CV nang cao\\\\Đồ Án\\\\ban_giao_nhom\\\\code\\\\validation\\\\missing_query_image.jpg'"
+      },
+      "cosine_similarity": null,
+      "comparison_error": null
+    }
+  ],
+  "summary": {
+    "query_total": 5,
+    "query_embedding_ok": 4,
+    "query_scored": 4,
+    "query_failed_or_not_processed": 1,
+    "exit_code": 1
+  },
+  "fatal_error": null,
+  "notes": [
+    "Cosine similarity is not an identity probability.",
+    "Detector scores describe face detection, not identity confidence.",
+    "This compares pairs; it does not measure benchmark accuracy or implement open-set 1:N.",
+    "Pretraining may overlap benchmark identities; this script cannot audit pretraining data."
+  ]
+}

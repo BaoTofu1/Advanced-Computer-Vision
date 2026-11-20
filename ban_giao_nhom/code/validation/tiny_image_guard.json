@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "script_version": "1.0.1",
+  "created_utc": "2026-10-20T18:15:38.086119+00:00",
+  "baseline": "B0",
+  "environment": {
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "packages": {
+      "facenet-pytorch": "2.6.0",
+      "torch": "2.2.2+cu121",
+      "torchvision": "0.17.2+cu121",
+      "numpy": "1.26.4",
+      "Pillow": "10.2.0"
+    },
+    "cuda_runtime": "12.1",
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU"
+  },
+  "device_requested": "cuda",
+  "device_used": "cuda",
+  "config": {
+    "detector": "MTCNN",
+    "keep_all": true,
+    "image_size": 160,
+    "margin": 0,
+    "min_face_size": 20,
+    "detector_stage_thresholds": [
+      0.6,
+      0.7,
+      0.7
+    ],
+    "tiny_image_policy": "Reject image if min(width,height) < min_face_size; no automatic upscaling",
+    "factor": 0.709,
+    "post_process": true,
+    "standardization": "(RGB_uint8_float - 127.5) / 128.0",
+    "crop": "MTCNN box crop and resize; no landmark similarity alignment",
+    "encoder": "InceptionResnetV1",
+    "pretrained": "vggface2",
+    "classify": false,
+    "embedding_dim": 512,
+    "embedding_normalization": "L2",
+    "score": "dot product of L2-normalized embeddings (cosine), range [-1, 1]",
+    "identity_threshold": null,
+    "torch_home": null
+  },
+  "reference": {
+    "path": "H:\\Nam tu\\Hoc Ki 1\\CV nang cao\\Đồ Án\\data\\raw\\mfr2\\mfr2\\BenAffleck\\BenAffleck_0003.png",
+    "status": "ok",
+    "sha256": "d21da91d55f6f43b64554b6aa2e17c11a910a320ce84c18bb0c762e2d04c5e0d",
+    "original_mode": "RGB",
+    "size_after_exif": [
+      160,
+      160
+    ],
+    "face_count": 1,
+    "boxes_xyxy": [
+      [
+        34.94428253173828,
+        23.163799285888672,
+        122.7783203125,
+        143.79095458984375
+      ]
+    ],
+    "detector_scores": [
+      0.999904990196228
+    ],
+    "embedding_dim": 512,
+    "error": null
+  },
+  "queries": [
+    {
+      "path": "C:\\Users\\Gia Bao\\AppData\\Local\\Temp\\mfr2_tiny_guard_emla0zql\\tiny_16x22.png",
+      "status": "error",
+      "sha256": "26fcd8b648f7573258f1d9f0d32fb1d80ce9d22e9c3e82d591742fadcf02cfe7",
+      "original_mode": "RGB",
+      "size_after_exif": [
+        16,
+        22
+      ],
+      "face_count": null,
+      "boxes_xyxy": [],
+      "detector_scores": [],
+      "embedding_dim": null,
+      "error": {
+        "code": "image_too_small",
+        "message": "Image size 16x22 has a side below MTCNN min_face_size=20; image was not enlarged."
+      },
+      "cosine_similarity": null,
+      "comparison_error": null
+    }
+  ],
+  "summary": {
+    "query_total": 1,
+    "query_embedding_ok": 0,
+    "query_scored": 0,
+    "query_failed_or_not_processed": 1,
+    "exit_code": 1
+  },
+  "fatal_error": null,
+  "notes": [
+    "Cosine similarity is not an identity probability.",
+    "Detector scores describe face detection, not identity confidence.",
+    "This compares pairs; it does not measure benchmark accuracy or implement open-set 1:N.",
+    "Pretraining may overlap benchmark identities; this script cannot audit pretraining data."
+  ]
+}
