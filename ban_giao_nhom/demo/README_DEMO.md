@@ -6,7 +6,7 @@ Cập nhật 16/11/2026. Thư mục này có ba file, dùng chung một pipeline
 |---|---|
 | `nhan_dien.py` | Pipeline dùng chung: `FacePipeline` (tìm mặt, trích embedding, đổi model B0/B1/B2), `Gallery` (đăng ký, nhận diện) và `Viewer` (cửa sổ hiển thị) |
 | `thu_anh_webcam.py` | Thu ảnh webcam đúng cấu trúc thư mục cho ba phiên |
-| `webcam_demo.py` | App demo: hiện tên / Unknown / không thấy mặt, cosine, ảnh đăng ký |
+| `webcam_demo.py` | App demo: hiện tên / Unknown / không thấy mặt, điểm, ảnh đăng ký; đổi hệ thống B0–B3 bằng phím 1–4 |
 
 Tất cả lệnh chạy từ thư mục dự án `DoAn_CV_NangCao`, bằng Python của môi trường dự án (cài theo [README_GOI_BAN_GIAO.md](../README_GOI_BAN_GIAO.md)); không cần cài thêm gì. Môi trường dùng `opencv-python-headless` (đọc camera được nhưng không có `cv2.imshow`), nên cửa sổ hiển thị dùng tkinter có sẵn trong Python. Máy không có GPU vẫn chạy được, khoảng 16 khung/giây phần xử lý ([kết quả đo](../do_toc_do/Do_toc_do_pipeline.ipynb)).
 
@@ -38,8 +38,8 @@ Sau khi thu đủ ba phiên, mở [../webcam/Hieu_chinh_va_test_webcam.ipynb](..
 ## 3. Chạy demo
 
 ```powershell
-python ban_giao_nhom/demo/webcam_demo.py                      # webcam 0, model B0, gallery = data/raw/webcam/s1_dang_ky
-python ban_giao_nhom/demo/webcam_demo.py --model B2           # thử model khác
+python ban_giao_nhom/demo/webcam_demo.py                      # webcam 0, hệ thống B3, gallery = data/raw/webcam/s1_dang_ky
+python ban_giao_nhom/demo/webcam_demo.py --model B0           # bắt đầu từ B0 để so
 python ban_giao_nhom/demo/webcam_demo.py --threshold 0.55     # đặt ngưỡng tay
 python ban_giao_nhom/demo/webcam_demo.py --device cpu         # ép chạy CPU
 ```
@@ -47,15 +47,17 @@ python ban_giao_nhom/demo/webcam_demo.py --device cpu         # ép chạy CPU
 | Phím | Tác dụng |
 |---|---|
 | `q` / Esc | Thoát |
-| `1` / `2` / `3` | Đổi model B0 / B1 / B2 |
+| `1` / `2` / `3` / `4` | Đổi hệ thống B0 / B1 / B2 / B3 (chuỗi cải tiến trong `cai_tien_B0_B3/`) |
 | `+` / `-` | Tăng / giảm ngưỡng 0,01 |
 | `r` | Nạp lại gallery từ thư mục (sau khi đăng ký thêm người) |
 
 Màn hình hiện: khung mặt và tên (xanh) hoặc `Unknown` (cam) kèm cosine; "Không tìm thấy mặt" / "Nhiều mặt trong khung hình" (đỏ); ảnh đăng ký của người được nhận; dòng dưới cùng ghi model, ngưỡng và nguồn của ngưỡng, số người trong gallery, thời gian xử lý, FPS.
 
-**Ngưỡng.** App đọc `nguong_webcam.json` nếu notebook webcam đã tạo. Chưa có thì dùng tạm ngưỡng chọn trên DigiFace (B0: 0,693), dòng trạng thái ghi "tạm, từ DigiFace". Ngưỡng tạm này khá chặt với ảnh thật: ít nhận nhầm người lạ nhưng hay trả Unknown cho người quen. Với B1/B2 thì ngưỡng DigiFace quá lỏng trên ảnh thật (bước 7: nhận nhầm khoảng 90% người lạ), nên đừng demo B1/B2 bằng ngưỡng tạm.
+**Hệ thống.** App dùng chuỗi B0 → B3 (`cai_tien_B0_B3/README_CAI_TIEN.md`): B0 FaceNet gốc, B1 FaceNet fine-tune trên mặt thật đeo khẩu trang giả, B2 thêm template đeo khẩu trang/kính giả cho mỗi người đăng ký, B3 ghép thêm ArcFace. Mặc định là B3, hệ thống tốt nhất trên ảnh che thật (ROF khẩu trang: DIR 83% so với 27% của B0). Khi demo, bấm `1` rồi `4` trước cùng một người đeo khẩu trang để người xem thấy khác biệt.
 
-**Model.** Bước 7 cho thấy B0 tốt nhất trên ảnh người thật, nên mặc định là B0. Phím `2`, `3` để cho người xem thấy khác biệt với B1/B2.
+**Ngưỡng.** App đọc `nguong_webcam.json` nếu notebook webcam đã tạo (đủ B0–B3). Chưa có thì dùng ngưỡng chọn trên dev LFW (`cai_tien_B0_B3/khoa_cau_hinh_B0_B3.json`); dòng trạng thái ghi "dev LFW". Ngưỡng dev LFW chọn trên ảnh người nổi tiếng, chưa chắc hợp với camera của nhóm, nên vẫn cần chạy notebook webcam.
+
+**Cần thêm:** `data/external/arcface/w600k_r50.onnx` cho B3 (tải bằng `cai_tien_B0_B3/tai_du_lieu_ngoai.py`). B3 chạy ArcFace trên CPU, chậm hơn B0 khoảng 20 ms mỗi khung (đo trên RTX 4060 Laptop: ~81 ms so với ~59 ms).
 
 **Chạy trên ảnh hoặc video có sẵn** (không cần webcam; dùng để thử hoặc chấm lô):
 

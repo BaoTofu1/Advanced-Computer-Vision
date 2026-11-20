@@ -87,14 +87,16 @@ TAB, FIG = OUT / 'tables', OUT / 'figures'
 LOCK_PATH = (OUT if REHEARSAL else HERE) / 'khoa_nguong_webcam.json'
 DEMO_THRESHOLDS = ROOT / 'ban_giao_nhom/demo/nguong_webcam.json'
 sys.path.insert(0, str(ROOT / 'ban_giao_nhom/demo'))
-from nhan_dien import FacePipeline, open_rgb, IMAGE_SUFFIXES, MTCNN_CONFIG
+sys.path.insert(0, str(ROOT / 'ban_giao_nhom/cai_tien_B0_B3'))
+from nhan_dien import open_rgb, IMAGE_SUFFIXES, MTCNN_CONFIG
+from cai_tien import LadderRecognizer
 
 SEED = 20261028
 TARGET_FPIR = 0.05
-MODELS = ['B0', 'B1', 'B2']
+MODELS = LadderRecognizer.SYSTEMS          # chuỗi cải tiến B0 → B3 (cai_tien_B0_B3/)
 SESSIONS = {'s1_dang_ky': 'đăng ký', 's2_hieu_chinh': 'hiệu chỉnh', 's3_test': 'test'}
 CONDITIONS = {'ro': 'Rõ mặt', 'khau_trang': 'Khẩu trang', 'kinh': 'Kính', 'tay_che': 'Tay che', 'nghieng': 'Nghiêng', 'toi': 'Tối'}
-COLORS = {'B0': '#8a8984', 'B1': '#2a78d6', 'B2': '#eb6834'}
+COLORS = {'B0': '#8a8984', 'B1': '#2a78d6', 'B2': '#1baf7a', 'B3': '#eb6834'}
 SKIP = 'Bỏ qua: chưa có dữ liệu webcam hợp lệ (xem mục 1).'
 START = time.perf_counter()
 plt.rcParams.update({'font.family': 'Arial', 'figure.dpi': 110, 'axes.unicode_minus': False,
@@ -210,25 +212,17 @@ else:
 md('''
 ## 2. Tìm mặt và trích embedding
 
-Mỗi ảnh đi qua MTCNN với cấu hình của bước 4/7. Chỉ ảnh có đúng một mặt mới có embedding. Bảng dưới cho biết detector hoạt động thế nào ở từng điều kiện; đây là một phần kết quả, không phải bước lọc dữ liệu.
+Mỗi ảnh đi qua MTCNN với cấu hình của bước 4/7, giống app demo. Chỉ ảnh có đúng một mặt mới được nhận diện; ảnh không thấy mặt hoặc thấy nhiều mặt tính là nhận sai. Bảng dưới cho biết detector hoạt động thế nào ở từng điều kiện; đây là một phần kết quả, không phải bước lọc dữ liệu.
 ''')
 
 gcode('''
 DEVICE = 'cuda:0' if torch.cuda.is_available() else 'cpu'
-pipe = FacePipeline('B0', device=DEVICE)
-statuses, crops = [], []
-for path in M.path:
-    status, crop, _ = pipe.prepare_face(open_rgb(path))
-    statuses.append(status); crops.append(crop)
-M['status'] = statuses
-M['has_crop'] = [c is not None for c in crops]
-valid = M.has_crop.to_numpy()
-EMB = {}
-for m in MODELS:
-    pipe.set_model(m)
-    e = np.zeros((len(M), 512), dtype=np.float32)
-    e[valid] = pipe.encode([c for c in crops if c is not None])
-    EMB[m] = e
+rec = LadderRecognizer('B0', device=DEVICE, root=ROOT)
+IMAGES = [open_rgb(path) for path in M.path]
+DETS = [rec.aligner.detect(im) for im in IMAGES]
+M['status'] = [{'one_face': 'single_face', 'center_face': 'multiple_faces', 'fallback': 'no_face'}[d['status']] for d in DETS]
+M['has_crop'] = M.status.eq('single_face')
+ITEMS = {i: rec.prepare(IMAGES[i], DETS[i]) for i in np.flatnonzero(M.has_crop.to_numpy())}
 detector = (M.assign(phiên=M.session.map(SESSIONS)).groupby(['phiên', 'condition'])
             .agg(ảnh=('image_id', 'size'), đúng_1_mặt=('has_crop', 'sum')).reset_index())
 detector['tỷ lệ thấy đúng 1 mặt'] = (100 * detector['đúng_1_mặt'] / detector['ảnh']).round(1)
@@ -239,32 +233,32 @@ display(M.status.value_counts().rename('số ảnh').to_frame())
 md('''
 ## 3. Gallery từ phiên đăng ký
 
-Template của mỗi người = trung bình embedding các ảnh đăng ký có đúng một mặt, rồi chuẩn hóa lại. Người không còn ảnh đăng ký hợp lệ thì không đăng ký được; ảnh của họ ở phiên 2/3 vẫn nằm trong mẫu số.
+Đăng ký giống app demo (`LadderRecognizer.enroll`): template mỗi người = trung bình embedding các ảnh đăng ký, chuẩn hóa lại; B2/B3 thêm template từ chính các ảnh đó đeo khẩu trang và kính giả. Người không còn ảnh đăng ký hợp lệ thì không đăng ký được; ảnh của họ ở phiên 2/3 vẫn nằm trong mẫu số.
 ''')
 
 gcode('''
 g = M[(M.session == 's1_dang_ky') & (M.role == 'known')]
 enroll = g.groupby('person').agg(ảnh_đăng_ký=('image_id', 'size'), ảnh_dùng_được=('has_crop', 'sum')).reset_index()
-GALLERY_NAMES = sorted(enroll[enroll['ảnh_dùng_được'] > 0].person)
-TEMPLATES = {}
-for m in MODELS:
-    t = []
-    for person in GALLERY_NAMES:
-        idx = np.flatnonzero(((M.session == 's1_dang_ky') & (M.person == person) & M.has_crop).to_numpy())
-        v = EMB[m][idx].mean(axis=0); t.append(v / np.linalg.norm(v))
-    TEMPLATES[m] = np.stack(t).astype(np.float32)
+people = {p: [IMAGES[i] for i in f.index if M.has_crop[i]] for p, f in g.groupby('person')}
+rec.enroll({p: ims for p, ims in people.items() if ims})
+GALLERY_NAMES = rec.names
 save(enroll, '03_enrollment'); display(enroll)
 display(Markdown(f'Đăng ký được **{len(GALLERY_NAMES)}/{len(enroll)} người**.'))
 
 
 def score(session, m):
+    rec.set_system(m)
     f = M[M.session == session]
-    idx = f.index.to_numpy(); has = f.has_crop.to_numpy()
-    sim = EMB[m][idx] @ TEMPLATES[m].T; top = sim.argmax(axis=1)
+    has = f.has_crop.to_numpy(); idx = f.index.to_numpy()[has]
+    top = np.zeros(len(f), int); best = np.full(len(f), -np.inf, np.float32)
+    if len(idx):
+        fn, arc = rec.embed([ITEMS[i] for i in idx])
+        sim = rec.scores(fn, arc)
+        top[has] = sim.argmax(axis=1); best[has] = sim[np.arange(len(idx)), sim.argmax(axis=1)]
     q = f[['image_id', 'session', 'person', 'role', 'condition', 'status']].copy()
     q['is_known'] = q.role.eq('known')
     q['top_identity'] = np.where(has, np.asarray(GALLERY_NAMES)[top], '')
-    q['top_score'] = np.where(has, sim[np.arange(len(f)), top], -np.inf).astype(np.float32)
+    q['top_score'] = best.astype(np.float32)
     q['top1_correct'] = q.is_known & has & (q.top_identity == q.person)
     return q.reset_index(drop=True)
 
@@ -312,7 +306,7 @@ def person_bootstrap(qs, col='correct_accepted', reps=2000):
     draws = {m: np.array(v) for m, v in draws.items()}
     out = [{'so sánh': m, 'điểm': arr[m][:, 0].sum() / arr[m][:, 1].sum(),
             'ci95 thấp': np.quantile(draws[m], .025), 'ci95 cao': np.quantile(draws[m], .975)} for m in qs]
-    for a, b in [('B1', 'B0'), ('B2', 'B0'), ('B2', 'B1')]:
+    for a, b in [('B1', 'B0'), ('B2', 'B1'), ('B3', 'B2'), ('B3', 'B0')]:
         d = draws[a] - draws[b]
         out.append({'so sánh': f'{a}-{b}', 'điểm': out[MODELS.index(a)]['điểm'] - out[MODELS.index(b)]['điểm'],
                     'ci95 thấp': np.quantile(d, .025), 'ci95 cao': np.quantile(d, .975)})
@@ -335,7 +329,7 @@ show = CAL_TABLE.copy()
 for c in ['DIR', 'Rank-1', 'FPIR', 'thấy đúng 1 mặt']:
     show[c] = (100 * show[c]).round(1)
 display(show)
-fig, axes = plt.subplots(1, 3, figsize=(14, 3.6), sharey=True)
+fig, axes = plt.subplots(1, 4, figsize=(17, 3.6), sharey=True)
 bins = np.linspace(-.2, 1, 37)
 for ax, m in zip(axes, MODELS):
     q = CAL[m][np.isfinite(CAL[m].top_score)]
@@ -357,11 +351,11 @@ Ngưỡng cũng được chép sang `demo/nguong_webcam.json` để app demo t�
 ''')
 
 gcode('''
-lock6 = json.loads((ROOT / 'ban_giao_nhom/danh_gia_test/khoa_cau_hinh_buoc7.json').read_text(encoding='utf-8'))
+lock_b = json.loads((ROOT / 'ban_giao_nhom/cai_tien_B0_B3/khoa_cau_hinh_B0_B3.json').read_text(encoding='utf-8'))
 LOCK = {'version': 'webcam_threshold_v1', 'target_FPIR': TARGET_FPIR,
         'thresholds': {m: THRESHOLDS[m] for m in MODELS},
         'calibration_manifest_sha256': digest(M[M.session != 's3_test'][['image_id', 'sha256']].to_csv(index=False)),
-        'models': {m: lock6['models'][m].get('sha256', lock6['models'][m].get('source')) for m in MODELS},
+        'models': lock_b['models'], 'w_facenet_B3': lock_b['systems']['B3']['w_facenet'],
         'mtcnn': MTCNN_CONFIG, 'gallery_persons': GALLERY_NAMES,
         'rule': 'max DIR trên phiên 2 với FPIR <= mục tiêu; hòa lấy ngưỡng cao hơn; ảnh không có đúng 1 mặt tính là không nhận'}
 if LOCK_PATH.exists():
@@ -412,10 +406,10 @@ else:
     display(Markdown('Chưa đủ 5 người known ở phiên 3 để tính khoảng tin cậy theo người.'))
 
 conds = [c for c in ['Tất cả'] + list(CONDITIONS.values()) if (RESULT['điều kiện'] == c).any()]
-fig, ax = plt.subplots(figsize=(max(7, 1.6 * len(conds) + 2), 4.2)); w = .26
+fig, ax = plt.subplots(figsize=(max(7, 1.6 * len(conds) + 2), 4.2)); w = .2
 for i, m in enumerate(MODELS):
     vals = [100 * RESULT[(RESULT.model == m) & (RESULT['điều kiện'] == c)].DIR.iloc[0] for c in conds]
-    bars = ax.bar(np.arange(len(conds)) + (i - 1) * (w + .02), vals, w, color=COLORS[m], label=m, zorder=3)
+    bars = ax.bar(np.arange(len(conds)) + (i - 1.5) * (w + .01), vals, w, color=COLORS[m], label=m, zorder=3)
     ax.bar_label(bars, fmt='%.0f', fontsize=8, padding=2, color='#52514e')
 ax.set_xticks(np.arange(len(conds)), conds); ax.set_ylim(0, 108)
 ax.set(ylabel='DIR (%)', title='Webcam phiên 3: tỷ lệ nhận đúng người quen tại ngưỡng đã khóa')
@@ -438,7 +432,7 @@ if len(CI):
     d = CI.set_index('so sánh')
     lines.append(f"- **So model (DIR, bootstrap theo {int(d['số_người'].iloc[0])} người):** "
                  + '; '.join(f"{k} = {100 * d.loc[k, 'điểm']:+.1f} điểm [{100 * d.loc[k, 'ci95 thấp']:+.1f}; {100 * d.loc[k, 'ci95 cao']:+.1f}]"
-                             for k in ['B1-B0', 'B2-B0', 'B2-B1']).replace('.', ','))
+                             for k in ['B1-B0', 'B2-B1', 'B3-B2', 'B3-B0']).replace('.', ','))
 lines.append(f"- **Model có DIR cao nhất trên webcam: {best}.** App demo đọc ngưỡng từ `demo/nguong_webcam.json`.")
 lines += ['', 'Số người ít nên khoảng tin cậy rộng; kết quả đúng cho camera, ánh sáng và nhóm người đã thu, chưa phải cho mọi điều kiện. '
           'Hệ thống không có chống giả mạo.']
