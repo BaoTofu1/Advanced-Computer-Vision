@@ -1,0 +1,207 @@
+{
+  "checks": "PASS",
+  "environment": {
+    "máy": "DESKTOP-N65CLUF",
+    "CPU": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+    "số luồng CPU của torch": 16,
+    "GPU": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "nguồn điện": "cắm sạc",
+    "python": "3.11.9",
+    "torch": "2.2.2+cu121",
+    "facenet_pytorch": "2.6.0",
+    "khung hình": "640×480, batch 1",
+    "min_face_size MTCNN": 20
+  },
+  "config": {
+    "frame_size": [
+      640,
+      480
+    ],
+    "frames_gpu": 240,
+    "frames_cpu": 240,
+    "warmup_frames": 15,
+    "gallery_size": 144,
+    "batch": 1,
+    "mtcnn": {
+      "image_size": 160,
+      "margin": 0,
+      "min_face_size": 20,
+      "thresholds": [
+        0.6,
+        0.7,
+        0.7
+      ],
+      "factor": 0.709
+    }
+  },
+  "summary": [
+    {
+      "thiết bị": "CPU",
+      "đoạn": "Tìm + cắt mặt",
+      "số khung": 178,
+      "trung vị (ms)": 32.086949999211356,
+      "p95 (ms)": 45.18026001460385,
+      "trung bình (ms)": 33.13804044829043,
+      "FPS theo trung vị": NaN
+    },
+    {
+      "thiết bị": "CPU",
+      "đoạn": "Trích embedding",
+      "số khung": 178,
+      "trung vị (ms)": 31.910349993268028,
+      "p95 (ms)": 35.453545016935095,
+      "trung bình (ms)": 32.080356744209595,
+      "FPS theo trung vị": NaN
+    },
+    {
+      "thiết bị": "CPU",
+      "đoạn": "Tìm trong gallery",
+      "số khung": 178,
+      "trung vị (ms)": 0.2770999853964895,
+      "p95 (ms)": 0.3559700242476538,
+      "trung bình (ms)": 0.2847168518732605,
+      "FPS theo trung vị": NaN
+    },
+    {
+      "thiết bị": "CPU",
+      "đoạn": "Cả khung hình (có 1 mặt)",
+      "số khung": 178,
+      "trung vị (ms)": 64.17004999821074,
+      "p95 (ms)": 77.74394500593189,
+      "trung bình (ms)": 65.50311404437329,
+      "FPS theo trung vị": 15.583593904444255
+    },
+    {
+      "thiết bị": "CPU",
+      "đoạn": "Cả khung hình (không thấy mặt)",
+      "số khung": 1,
+      "trung vị (ms)": 17.000399995595217,
+      "p95 (ms)": 17.000399995595217,
+      "trung bình (ms)": 17.000399995595217,
+      "FPS theo trung vị": 58.822145376526365
+    },
+    {
+      "thiết bị": "CPU",
+      "đoạn": "Cả khung hình (mọi khung)",
+      "số khung": 240,
+      "trung vị (ms)": 61.997850018087775,
+      "p95 (ms)": 76.66097997280302,
+      "trung bình (ms)": 58.86212208279176,
+      "FPS theo trung vị": 16.129591585970346
+    },
+    {
+      "thiết bị": "GPU",
+      "đoạn": "Tìm + cắt mặt",
+      "số khung": 178,
+      "trung vị (ms)": 39.283049991354346,
+      "p95 (ms)": 59.259769989876084,
+      "trung bình (ms)": 41.099502808045536,
+      "FPS theo trung vị": NaN
+    },
+    {
+      "thiết bị": "GPU",
+      "đoạn": "Trích embedding",
+      "số khung": 178,
+      "trung vị (ms)": 17.08309998502955,
+      "p95 (ms)": 21.891974995378405,
+      "trung bình (ms)": 17.911475283562027,
+      "FPS theo trung vị": NaN
+    },
+    {
+      "thiết bị": "GPU",
+      "đoạn": "Tìm trong gallery",
+      "số khung": 178,
+      "trung vị (ms)": 0.25385001208633184,
+      "p95 (ms)": 0.31669501622673124,
+      "trung bình (ms)": 0.26153539421214733,
+      "FPS theo trung vị": NaN
+    },
+    {
+      "thiết bị": "GPU",
+      "đoạn": "Cả khung hình (có 1 mặt)",
+      "số khung": 178,
+      "trung vị (ms)": 57.37379999482073,
+      "p95 (ms)": 78.34177999466195,
+      "trung bình (ms)": 59.27251348581971,
+      "FPS theo trung vị": 17.4295584411399
+    },
+    {
+      "thiết bị": "GPU",
+      "đoạn": "Cả khung hình (không thấy mặt)",
+      "số khung": 1,
+      "trung vị (ms)": 26.377500034868717,
+      "p95 (ms)": 26.377500034868717,
+      "trung bình (ms)": 26.377500034868717,
+      "FPS theo trung vị": 37.911098423963175
+    },
+    {
+      "thiết bị": "GPU",
+      "đoạn": "Cả khung hình (mọi khung)",
+      "số khung": 240,
+      "trung vị (ms)": 55.576450016815215,
+      "p95 (ms)": 77.79588996781968,
+      "trung bình (ms)": 56.842849167151144,
+      "FPS theo trung vị": 17.993232739720508
+    }
+  ],
+  "draw": {
+    "số khung": 60,
+    "trung vị (ms)": 9.17205002042465,
+    "p95 (ms)": 10.856105000129899
+  },
+  "gallery_scaling": [
+    {
+      "số người trong gallery": 20,
+      "trung vị (ms)": 0.03065000055357814,
+      "p95 (ms)": 0.05299999611452222
+    },
+    {
+      "số người trong gallery": 144,
+      "trung vị (ms)": 0.16209998284466565,
+      "p95 (ms)": 0.21698001946788273
+    },
+    {
+      "số người trong gallery": 1000,
+      "trung vị (ms)": 0.16799999866634607,
+      "p95 (ms)": 0.2329350245418026
+    },
+    {
+      "số người trong gallery": 10000,
+      "trung vị (ms)": 0.19665004219859838,
+      "p95 (ms)": 0.35182000137865543
+    }
+  ],
+  "embedding_by_model": [
+    {
+      "model": "B0",
+      "thiết bị": "GPU",
+      "số crop": 120,
+      "trung vị (ms)": 16.985349997412413,
+      "p95 (ms)": 23.147565001272596
+    },
+    {
+      "model": "B1",
+      "thiết bị": "GPU",
+      "số crop": 120,
+      "trung vị (ms)": 16.6019499883987,
+      "p95 (ms)": 22.910915012471378
+    },
+    {
+      "model": "B2",
+      "thiết bị": "GPU",
+      "số crop": 120,
+      "trung vị (ms)": 16.460250015370548,
+      "p95 (ms)": 21.74615000549238
+    }
+  ],
+  "frame_status": {
+    "('cpu', 'multiple_faces')": 61,
+    "('cpu', 'no_face')": 1,
+    "('cpu', 'single_face')": 178,
+    "('cuda:0', 'multiple_faces')": 61,
+    "('cuda:0', 'no_face')": 1,
+    "('cuda:0', 'single_face')": 178
+  },
+  "executed_at_utc": "2026-11-15T18:54:22.724425+00:00",
+  "elapsed_seconds": 45.54318710003281
+}
