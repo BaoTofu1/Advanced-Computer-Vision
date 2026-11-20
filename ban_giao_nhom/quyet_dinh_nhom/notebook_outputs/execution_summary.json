@@ -1,0 +1,17 @@
+{
+  "checks": "PASS",
+  "allocation_snapshot_sha256": "df873a524cfc9663ef3dc4f4bcc5a1f892780b9a78bde2a9e2fe79415326f800",
+  "technical_allocation_frozen": true,
+  "official_dataset_release": false,
+  "policy_responses_recorded": 5,
+  "gallery_responses_recorded": 0,
+  "gallery_images_hash_verified": 1032,
+  "gallery_pages": 58,
+  "input_contract_tests": 6,
+  "human_input_written_by_notebook": false,
+  "identity_verified_independently_set": false,
+  "raw_modified": false,
+  "notebook_source_sha256": "e3a9ba8e73fef450fe6ab61723f49416ed632adebb44ed34f34161d6bcc49d90",
+  "executed_at_utc": "2026-10-27T17:32:45.472776+00:00",
+  "elapsed_seconds": 9.865
+}

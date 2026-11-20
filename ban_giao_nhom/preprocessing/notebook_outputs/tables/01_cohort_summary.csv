@@ -1,0 +1,7 @@
+﻿role,images,identities,cohort
+gallery,60,20,representative
+known_query,80,20,representative
+unknown_query,160,40,representative
+gallery,1,1,stress_existing_alert
+known_query,1,1,stress_existing_alert
+unknown_query,6,5,stress_existing_alert

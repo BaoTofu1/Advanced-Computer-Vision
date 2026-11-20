@@ -1,0 +1,4 @@
+﻿source_a,identity_a,source_b,identity_b,method,name_similarity,decision,identity_verified,reviewer,evidence_reference,canonical_a,canonical_b,guard_reason,partition_a,partition_b
+ROF,immanuel_macron,MFR2,EmmanuelMacron,spelling_candidate,0.9285714285714286,pending_independent_mapping,False,,,ROF:immanuel_macron,MFR2:EmmanuelMacron,possible_same_identity_not_verified,external_test_reserve,external_test_reserve
+ROF,joe_biden,MFR2,JoeBiden,normalized_exact_name,1.0,pending_independent_mapping,False,,,ROF:joe_biden,MFR2:JoeBiden,possible_same_identity_not_verified,external_test_reserve,external_test_reserve
+ROF,justin_trudeau,MFR2,JustinTrudeau,normalized_exact_name,1.0,pending_independent_mapping,False,,,ROF:justin_trudeau,MFR2:JustinTrudeau,possible_same_identity_not_verified,external_test_reserve,external_test_reserve

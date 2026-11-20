@@ -1,0 +1,9 @@
+{
+  "mode": "computed_now",
+  "fingerprint": "5a17aee505929bb251b63ab6f19d29e22a9fc554422d2ba8f1a6986c54ca7ecb",
+  "raw_sample_hash_checked_now": 308,
+  "detector_inputs_computed_now": 308,
+  "detector_inputs_reused": 0,
+  "cache_created_at_utc": "2026-11-06T08:32:15.850546+00:00",
+  "latency_values_from": "2026-11-06T08:32:15.850546+00:00"
+}

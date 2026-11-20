@@ -1,0 +1,10 @@
+﻿test,passed
+chia255 trước standardization,True
+standardize hai lần,True
+đảo RGB thành BGR,True
+raw hash sai phải dừng,True
+dispatcher zero/one/multiple bbox,True
+fingerprint stale không dùng cache,True
+artifact hash sai không dùng cache,True
+"no_face: không tensor, giữ mẫu số thật n=11",True
+"multiple_faces: không tensor, giữ mẫu số thật n=1",True

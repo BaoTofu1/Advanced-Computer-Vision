@@ -1,0 +1,3 @@
+﻿cohort,paired_images,bbox_outside_images,pixel_MAE_median,pixel_MAE_p95,clipped_area_fraction_median
+representative,296,272,32.713893229166665,54.39640625,0.5991346218415311
+stress_existing_alert,0,0,,,

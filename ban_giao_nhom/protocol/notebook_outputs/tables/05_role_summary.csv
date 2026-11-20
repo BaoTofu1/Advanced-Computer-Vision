@@ -1,0 +1,9 @@
+﻿partition,role,images,identities,review_flagged
+test,gallery,300,100,5
+test,known_query,3700,100,115
+test,unknown_query,4000,100,111
+train,train,57600,1600,1794
+train,train_monitor,6400,1600,192
+val,gallery,300,100,14
+val,known_query,3700,100,102
+val,unknown_query,4000,100,115

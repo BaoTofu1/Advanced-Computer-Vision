@@ -1,0 +1,11 @@
+﻿identity_role,role,condition,images,identities,review_flagged
+ineligible,ineligible_protocol_reserve,clean,2,1,0
+ineligible,ineligible_protocol_reserve,sunglasses,16,1,2
+known,gallery,clean,432,144,24
+known,gallery_group_reserve,clean,1,1,0
+known,known_query,clean,2693,144,171
+known,known_query,masked,178,47,53
+known,known_query,sunglasses,1432,126,133
+unknown,unknown_query,clean,775,36,56
+unknown,unknown_query,masked,20,8,4
+unknown,unknown_query,sunglasses,276,29,33

@@ -1,0 +1,39 @@
+{
+  "version": "preprocess_val_pilot_v1",
+  "scope": "pilot_DigiFace_val_only",
+  "official_policy_frozen": false,
+  "direct_candidate": "pre_cropped_source: EXIF+RGB+PIL_BILINEAR160+fixed_standardization_once",
+  "redetect_candidate": {
+    "version": "preprocess_val_pilot_v1",
+    "seed": 20261028,
+    "partition": "val",
+    "source": "DigiFace",
+    "known_identities": 20,
+    "unknown_identities": 40,
+    "known_queries_per_identity": 4,
+    "unknown_queries_per_identity": 4,
+    "image_size": 160,
+    "margin": 0,
+    "min_face_size": 20,
+    "thresholds": [
+      0.6,
+      0.7,
+      0.7
+    ],
+    "factor": 0.709,
+    "keep_all": true,
+    "post_process": true,
+    "direct_resize": "PIL_BILINEAR",
+    "color": "EXIF_transpose_then_RGB; nonopaque_alpha_composite_white",
+    "standardization": "(pixel_float_0_255-127.5)/128.0",
+    "face_policy": "exactly_one_or_return_failure; no_face_selection",
+    "cache_policy": "reuse_only_exact_fingerprint_and_artifact_hash_match",
+    "tuning_scope": "validation_only; no_recognition_score"
+  },
+  "failure_policy": "exactly_one; retain all failures; no substitution",
+  "pixel_cache_sha256": "af3257cd4237dc2b9f39abec658c9ee3ccc904067e7400818aaed1d75bcaf9c2",
+  "input_fingerprint": "5a17aee505929bb251b63ab6f19d29e22a9fc554422d2ba8f1a6986c54ca7ecb",
+  "recognition_selection_done": false,
+  "P5_confirmed_by_user": true,
+  "selected_DigiFace_preprocessing": "direct_resize"
+}

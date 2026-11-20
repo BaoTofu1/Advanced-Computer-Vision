@@ -1,0 +1,25 @@
+{
+  "version": "stage3_allocation_20261028_v1",
+  "technical_allocation_frozen": true,
+  "official_dataset_release": false,
+  "independent_identity_verification_claimed": false,
+  "protocol_version": "identity_protocol_draft_v2",
+  "allocations": {
+    "internal_roles": {
+      "path": "ban_giao_nhom/protocol/notebook_outputs/tables/05_image_roles_draft.csv",
+      "sha256": "b230104ba43a8060c948cba3c06473256d535efc7974930a90acaf7bc3c78a6a"
+    },
+    "rof_roles": {
+      "path": "ban_giao_nhom/protocol/notebook_outputs/tables/07_rof_image_roles_draft.csv",
+      "sha256": "3540732b88c60d8842c454b9c84a44ece5f458f3e377b6ad924581f56aecc934"
+    },
+    "gallery_queue": {
+      "path": "ban_giao_nhom/protocol/notebook_outputs/tables/07_gallery_review_queue.csv",
+      "sha256": "26e39c7d767eac48760f6036d56e94f68077224b0e4f0273cdd9ff6a92bd7c5c"
+    }
+  },
+  "internal_images": 80000,
+  "rof_images": 5825,
+  "gallery_candidates": 1032,
+  "pilot_scope": "DigiFace validation only; no recognition; raw read only"
+}

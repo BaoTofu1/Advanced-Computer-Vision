@@ -1,0 +1,52 @@
+{
+  "version": "identity_protocol_draft_v2",
+  "status": "draft_unconfirmed",
+  "raw_write_allowed": false,
+  "internal_image_roles": "tables/05_image_roles_draft.csv",
+  "external_image_roles": "tables/07_external_image_roles_draft.csv",
+  "gallery_review_queue": "tables/07_gallery_review_queue.csv",
+  "required_columns": [
+    "image_id",
+    "source",
+    "canonical_identity",
+    "path",
+    "sha256",
+    "pixel_sha256",
+    "photo_group",
+    "leakage_group",
+    "guard_group",
+    "partition",
+    "role",
+    "qa_action_proposed",
+    "qa_reasons"
+  ],
+  "loader_pilot_scope": {
+    "allowed_source": "DigiFace",
+    "allowed_partition": "val",
+    "allowed_roles": [
+      "gallery",
+      "known_query",
+      "unknown_query"
+    ],
+    "reject_sources": [
+      "ROF",
+      "MFR2"
+    ],
+    "reject_partitions": [
+      "train",
+      "test",
+      "external_test_reserve"
+    ]
+  },
+  "variant_inheritance": [
+    "image_id",
+    "canonical_identity",
+    "partition",
+    "photo_group",
+    "leakage_group",
+    "guard_group"
+  ],
+  "failure_status_must_not_drop_input": true,
+  "human_policy_approval_is_not_semantic_confirmation": true,
+  "official_split_frozen": false
+}

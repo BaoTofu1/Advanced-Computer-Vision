@@ -1,0 +1,9 @@
+﻿decision,owner,required_evidence,status
+QA semantic,A/C,Đọc ca hold/nhãn/box; cập nhật group_decisions.csv có bằng chứng,pending
+Gallery DigiFace,A/B,Xác nhận chính sách gallery dữ liệu nền hoặc tạo clear-gallery đã QA trước recognition,pending
+ROF gallery/query,A/C,Đã có vai trò cụ thể; xác nhận clean gallery/semantic trong 07_gallery_review_queue.csv,pending_independent_review
+Alias ROF/MFR2,A/C,Giữ guard; nếu phân ảnh thật sang calibration phải chia cùng phía,pending
+MFR2 verification,C,"Giữ 848 dòng pairs; chốt cách threshold/fold riêng, không tự gọi fold tạo mới là official",pending
+Enrollment failure,B/C,"Giữ toàn bộ known-query trong mẫu số, log thất bại; không thay ảnh gallery bằng query",technical_policy_defined
+Preprocessing pilot,A/B,Đủ kiểm kỹ thuật để thử resize/redetect trên validation; không sử dụng test/ROF/MFR2,technical_ready
+Webcam,C,Thu có đồng thuận; người/phiên calibration và test tách biệt,not_started

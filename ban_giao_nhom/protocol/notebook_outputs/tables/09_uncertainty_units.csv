@@ -1,0 +1,5 @@
+﻿partition,role,query_images,independent_identity_clusters
+test,known_query,3700,100
+test,unknown_query,4000,100
+val,known_query,3700,100
+val,unknown_query,4000,100

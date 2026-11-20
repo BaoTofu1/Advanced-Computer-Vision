@@ -1,0 +1,7 @@
+﻿case,passed
+Hợp lệ + hai lượt giữ nguyên,True
+Sai mã lựa chọn,True
+Thiếu người duyệt,True
+Sai ngày ISO,True
+ID ảnh lạ,True
+Dòng trùng,True

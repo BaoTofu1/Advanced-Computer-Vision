@@ -1,0 +1,7 @@
+﻿source,condition,original_images,draft_images,withheld_images,retained_fraction
+DigiFace,synthetic_unannotated,80000,80000,0,1.0
+MFR2,clean,98,98,0,1.0
+MFR2,masked,171,171,0,1.0
+ROF,clean,4356,3903,453,0.8960055096418733
+ROF,masked,264,198,66,0.75
+ROF,sunglasses,2091,1724,367,0.8244858919177427

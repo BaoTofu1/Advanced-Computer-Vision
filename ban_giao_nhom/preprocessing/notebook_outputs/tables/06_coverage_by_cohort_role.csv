@@ -1,0 +1,7 @@
+﻿cohort,role,input_images,identities,direct_prepared,redetect_single,no_face,multiple_faces,other_failure,redetect_coverage
+representative,gallery,60,20,60,60,0,0,0,1.0
+representative,known_query,80,20,80,79,1,0,0,0.9875
+representative,unknown_query,160,40,160,157,2,1,0,0.98125
+stress_existing_alert,gallery,1,1,1,0,1,0,0,0.0
+stress_existing_alert,known_query,1,1,1,0,1,0,0,0.0
+stress_existing_alert,unknown_query,6,5,6,0,6,0,0,0.0

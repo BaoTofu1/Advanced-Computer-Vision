@@ -1,0 +1,6 @@
+﻿decision,owner,required_evidence,status
+Gallery rõ/dữ liệu nền,A/B,Xác nhận bằng ảnh; chưa có quyết định thật ở pilot,pending_human_semantic
+Áp dụng hold/box/alias,A/C,Tệp group_decisions và evidence riêng; không sửa raw,pending_human_semantic
+Direct resize cho DigiFace,B/C,Quyết định P5 được đọc từ project_decisions.csv,confirmed_P5
+Enrollment failure 3/3,B/C,Giữ query và báo failure; không thay gallery bằng query,proposed_contract
+Webcam/cảnh rộng,B/C,Detector + log no/multiple face; cần dữ liệu phiên riêng,not_started
