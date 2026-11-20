@@ -1,0 +1,10 @@
+{
+  "fingerprint": "1664283ec9203ef8b8aaefcd9d3dc1f1a13bd9cb7bdf2295c0a32def8b0e328c",
+  "spec": "RGBA-alpha-audit|RGB-exif|bilinear160|phash64|laplacian64|v2",
+  "images": 86980,
+  "cached_before_run": 0,
+  "newly_computed": 86980,
+  "elapsed_seconds": 159.57759780000197,
+  "seed": 20261021,
+  "completed": true
+}

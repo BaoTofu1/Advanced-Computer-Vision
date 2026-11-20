@@ -1,0 +1,7 @@
+﻿source,condition,images,identities
+DigiFace,synthetic_unannotated,80000,2000
+MFR2,clean,98,53
+MFR2,masked,171,53
+ROF,clean,4356,181
+ROF,masked,264,57
+ROF,sunglasses,2091,157

@@ -1,0 +1,10 @@
+{
+  "fingerprint": "c59e9ebe779c16362f1454835dd0d4afd8bebcad2d8a2660212abe0325c71b72",
+  "spec": "RGB-exif|bilinear160|phash64|laplacian64|v1",
+  "images": 86980,
+  "cached_before_run": 0,
+  "newly_computed": 86980,
+  "elapsed_seconds": 157.5704368000006,
+  "seed": 20261021,
+  "completed": true
+}

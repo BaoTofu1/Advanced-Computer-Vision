@@ -1,0 +1,59 @@
+{
+  "raw_images": 86980,
+  "raw_bytes_match": 86980,
+  "annotation_rows": 10137,
+  "annotation_labels": 183,
+  "acquired_rof_crops": 6711,
+  "acquired_rof_labels": 182,
+  "source_images_reconstructed": 6296,
+  "crop_pixel_matches": 6711,
+  "exact_groups": 5,
+  "exact_cross_label_images": 2,
+  "near_pairs": 488,
+  "pair_review_findings": {
+    "no_confirmed_duplicate": 252,
+    "degenerate_flat_candidate": 120,
+    "same_photo_visual": 96,
+    "uncertain": 15,
+    "exact_pixel": 5
+  },
+  "verified_logo_assets": 3,
+  "logo_descendant_crops": 34,
+  "flat_crops": 18,
+  "tiny_crops": 14,
+  "clipped_source_boxes": 83,
+  "downloaded_annotation_rows": 6717,
+  "downloaded_but_invalid_box": 6,
+  "exact_condition_conflict_groups": 3,
+  "manual_hold_unique_images": 25,
+  "multi_box_acquired": 723,
+  "alias_candidates": 3,
+  "review_pages_total": 62,
+  "review_pages_viewed": 62,
+  "proposed_actions": {
+    "candidate_no_detected_blocker": 83148,
+    "review_required": 2946,
+    "hold_proposed": 804,
+    "duplicate_secondary_proposed": 82
+  },
+  "group_decision_rows": 0,
+  "group_reviewed_images": 0,
+  "group_decisions_applied": false,
+  "scan_modes": {
+    "02_raw_integrity": "matching_cache",
+    "05_source_crop_audit": "matching_cache"
+  },
+  "review_input_sha256": {
+    "page_review_log.csv": "4404c38cf6a7733f0748d59fd35aa7d267dfdf58cbe34143ca8be87e589a8384",
+    "pair_review_decisions.csv": "751f2975bf503028deea7bc75eb937f037a7175dd488186a0c94f5dcc9feac12",
+    "case_review_decisions.csv": "0062fa679ba6719e2aba51a66355f3c423e062bfa3467cd56c33ab0521562b08",
+    "verified_source_assets.csv": "7c25240a40d3c4bf7d2425a264e16ff19fb90549ceae6ac07b2265ae917f9d81",
+    "group_decisions.csv": "aecb197e76b8c0a4f20c3bf16a0a60c7464960062ef607bcba872479481685da"
+  },
+  "checks": "PASS",
+  "preprocessing_started": false,
+  "raw_deleted_or_modified": false,
+  "labels_reassigned": false,
+  "split_assigned": false,
+  "trained": false
+}

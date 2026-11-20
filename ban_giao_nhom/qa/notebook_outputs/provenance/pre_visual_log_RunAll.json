@@ -1,0 +1,123 @@
+{
+  "status": "PASS",
+  "fresh_kernel": true,
+  "elapsed_seconds": 33.737,
+  "executed_code_cells": 23,
+  "timeline": [
+    {
+      "cell": 2,
+      "execution_count": 1,
+      "elapsed": 1.583
+    },
+    {
+      "cell": 4,
+      "execution_count": 2,
+      "elapsed": 2.626
+    },
+    {
+      "cell": 6,
+      "execution_count": 3,
+      "elapsed": 7.3
+    },
+    {
+      "cell": 8,
+      "execution_count": 4,
+      "elapsed": 7.822
+    },
+    {
+      "cell": 10,
+      "execution_count": 5,
+      "elapsed": 7.907
+    },
+    {
+      "cell": 12,
+      "execution_count": 6,
+      "elapsed": 12.441
+    },
+    {
+      "cell": 14,
+      "execution_count": 7,
+      "elapsed": 12.5
+    },
+    {
+      "cell": 16,
+      "execution_count": 8,
+      "elapsed": 12.838
+    },
+    {
+      "cell": 18,
+      "execution_count": 9,
+      "elapsed": 13.801
+    },
+    {
+      "cell": 20,
+      "execution_count": 10,
+      "elapsed": 16.457
+    },
+    {
+      "cell": 22,
+      "execution_count": 11,
+      "elapsed": 21.438
+    },
+    {
+      "cell": 24,
+      "execution_count": 12,
+      "elapsed": 24.976
+    },
+    {
+      "cell": 26,
+      "execution_count": 13,
+      "elapsed": 26.432
+    },
+    {
+      "cell": 28,
+      "execution_count": 14,
+      "elapsed": 27.141
+    },
+    {
+      "cell": 30,
+      "execution_count": 15,
+      "elapsed": 27.351
+    },
+    {
+      "cell": 32,
+      "execution_count": 16,
+      "elapsed": 29.486
+    },
+    {
+      "cell": 34,
+      "execution_count": 17,
+      "elapsed": 29.621
+    },
+    {
+      "cell": 36,
+      "execution_count": 18,
+      "elapsed": 30.874
+    },
+    {
+      "cell": 38,
+      "execution_count": 19,
+      "elapsed": 32.064
+    },
+    {
+      "cell": 40,
+      "execution_count": 20,
+      "elapsed": 32.788
+    },
+    {
+      "cell": 42,
+      "execution_count": 21,
+      "elapsed": 32.897
+    },
+    {
+      "cell": 44,
+      "execution_count": 22,
+      "elapsed": 33.102
+    },
+    {
+      "cell": 46,
+      "execution_count": 23,
+      "elapsed": 33.198
+    }
+  ]
+}

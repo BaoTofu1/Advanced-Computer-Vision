@@ -1,0 +1,10 @@
+﻿item,evidence,proposal,owner,status
+Exact pixel khác nhãn,07_exact_members.csv + cùng pixel + context nguồn,Tạm giữ cả hai crop; không tự chọn nhãn đúng,A/C,needs_group_confirmation
+Crop gần một màu/quá nhỏ,06_* + contact sheets,Tạm giữ bản crop hiện tại; xem có thể sửa annotation ở bước riêng,A,needs_group_confirmation
+Entry nhiều box dưới một nhãn,10_multiple_author_boxes_acquired.csv + context,Tạm giữ cho tới khi có subject-box mapping; không chọn face_index=0,A/C,needs_semantic_ground_truth
+Clipping và landmark ngoài khung,09_* + 11_*,Xem ảnh gốc/crop trước khi đề xuất sửa box; không loại mọi ảnh có bbox detector vượt khung,A/B,review_geometry
+Gần trùng đã review/còn pending,14_pair_review_results.csv,Nhóm photo để tránh leakage; cặp chưa xác nhận không merge ID,A/C,review_log_available
+Alias giữa ROF/MFR2,12_alias_mapping_candidates.csv,Xác nhận bằng mapping nguồn độc lập hoặc xử lý bảo thủ trong protocol,A/C,mapping_pending
+Protocol MFR2,13_mfr2_pairs.csv,Giữ file official; báo unique-pair sensitivity riêng nếu dùng,C,protocol_decision_pending
+Preprocessing pilot,QA manifest + crop/scene association,Chỉ bắt đầu sau khi nhóm duyệt kết quả QA; so resize thẳng và chạy lại detector với cùng quy ước đầu vào,A/B/C,not_started
+"Cùng ảnh, khác condition clean/sunglasses",07_exact_members + photo group summary,"Chốt định nghĩa condition; tạm giữ nhóm mâu thuẫn, không tự relabel",A/C,condition_mapping_pending

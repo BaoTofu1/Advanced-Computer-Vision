@@ -1,0 +1,9 @@
+{
+  "name": "05_source_crop_audit",
+  "fingerprint": "16d230e84583cb5cddf9f187141ef74271361783f87ae09d922b1daf9f584b96",
+  "mode": "computed_now",
+  "rows": 6717,
+  "elapsed_seconds": 13.659,
+  "table_sha256": "7d6c74723e47c18268c251a352e4f330563ab79a9741bbd3e543efd6d0b4360c",
+  "checked_at_utc": "2026-10-20T19:49:39.830735+00:00"
+}

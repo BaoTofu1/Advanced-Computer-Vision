@@ -1,0 +1,9 @@
+{
+  "name": "02_raw_integrity",
+  "fingerprint": "e74c4fe762a1e1936ccdbedfd0979a66b2d8a370306e2b7f31ba947fad51d92e",
+  "mode": "computed_now",
+  "rows": 86980,
+  "elapsed_seconds": 12.495,
+  "table_sha256": "d0710b27ed76986c4720ef532969c4f89f7be682ee2dba46439f1e7c98725919",
+  "checked_at_utc": "2026-10-20T19:49:22.674615+00:00"
+}

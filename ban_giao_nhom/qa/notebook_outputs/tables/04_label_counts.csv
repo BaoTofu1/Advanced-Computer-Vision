@@ -1,0 +1,4 @@
+﻿condition,annotation_labels,acquired_labels,annotation_boxes,acquired_crops
+masked,67,57,515,264
+neutral,182,181,6659,4356
+sunglasses,159,157,2963,2091

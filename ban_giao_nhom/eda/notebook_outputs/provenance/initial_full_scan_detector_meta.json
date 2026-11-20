@@ -1,0 +1,23 @@
+{
+  "fingerprint": "30d54db3199e82ba1c7014050493efbf9ec334320b6d50b06a85ced0b3ac3f44",
+  "config": {
+    "version": "mtcnn-audit-v2-explicit-small-input",
+    "min_face_size": 20,
+    "thresholds": [
+      0.6,
+      0.7,
+      0.7
+    ],
+    "factor": 0.709,
+    "max_side": 640,
+    "image_size": 160,
+    "keep_all": true,
+    "seed": 20261021
+  },
+  "device": "cuda:0",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "completed": true,
+  "newly_computed": 11580,
+  "cached_before_run": 0,
+  "elapsed_seconds": 431.35593049999443
+}

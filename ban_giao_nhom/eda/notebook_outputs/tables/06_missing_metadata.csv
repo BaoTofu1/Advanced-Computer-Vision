@@ -1,0 +1,16 @@
+﻿source,field,n,missing_or_unknown,fraction
+DigiFace,session_id,80000,80000,1.0
+DigiFace,condition,80000,80000,1.0
+DigiFace,original_id,80000,80000,1.0
+DigiFace,source_url,80000,80000,1.0
+DigiFace,author_box,80000,80000,1.0
+MFR2,session_id,269,269,1.0
+MFR2,condition,269,0,0.0
+MFR2,original_id,269,269,1.0
+MFR2,source_url,269,269,1.0
+MFR2,author_box,269,269,1.0
+ROF,session_id,6711,6711,1.0
+ROF,condition,6711,0,0.0
+ROF,original_id,6711,0,0.0
+ROF,source_url,6711,0,0.0
+ROF,author_box,6711,0,0.0

@@ -1,0 +1,4 @@
+﻿source,images,identities,images_per_id_min,images_per_id_median,images_per_id_max,IDs_lt5
+DigiFace,80000,2000,40,40.0,40,0
+MFR2,269,53,2,5.0,10,19
+ROF,6711,182,2,30.0,95,1

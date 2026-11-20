@@ -1,0 +1,7 @@
+﻿source,unit,count,identities
+DigiFace archive,encoded PNG,144000,2000.0
+ROF annotations,face-box records,10137,183.0
+ROF requested,unique URL,9520,
+ROF downloaded,decoded source image URL,6296,
+ROF crop candidates,usable-to-decode crop,6711,182.0
+MFR2,PNG file,269,53.0

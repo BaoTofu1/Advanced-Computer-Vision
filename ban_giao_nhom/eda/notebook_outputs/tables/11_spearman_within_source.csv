@@ -1,0 +1,10 @@
+﻿source,feature_a,feature_b,n,spearman
+DigiFace,edge_density,blur_laplacian_160,80000,0.7724818462110147
+DigiFace,contrast,entropy_bits,80000,0.570364036814049
+DigiFace,brightness,dark_fraction,80000,-0.6986227914947571
+MFR2,edge_density,blur_laplacian_160,269,0.6633247398810908
+MFR2,contrast,entropy_bits,269,0.3162718008470658
+MFR2,brightness,dark_fraction,269,-0.4296841109196335
+ROF,edge_density,blur_laplacian_160,6711,0.8246757354542787
+ROF,contrast,entropy_bits,6711,0.7473708879269222
+ROF,brightness,dark_fraction,6711,-0.44118666434661274

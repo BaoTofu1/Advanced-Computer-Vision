@@ -1,0 +1,7 @@
+﻿scenario,source,labels_remaining,IDs_clean_and_masked,IDs_2clean_and_masked,IDs_no_clean
+before_QA,ROF,182,57,57,1
+before_QA,MFR2,53,53,45,0
+A_structure_only,ROF,182,57,57,1
+A_structure_only,MFR2,53,53,45,0
+B_plus_ambiguity_duplicates,ROF,182,55,55,1
+B_plus_ambiguity_duplicates,MFR2,53,53,45,0

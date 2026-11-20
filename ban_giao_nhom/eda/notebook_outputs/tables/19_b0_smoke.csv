@@ -1,0 +1,5 @@
+﻿case,path,status,face_count,cosine,error
+self,BenAffleck/BenAffleck_0003.png,ok,1,1.0,
+same_ID_other_clean,BenAffleck/BenAffleck_0007.png,ok,1,0.8152379393577576,
+same_ID_masked,BenAffleck/BenAffleck_0004.png,ok,1,0.4764680862426758,
+different_source_ID,AhmadAli/AhmadAli_0002.png,ok,1,-0.04287663847208023,

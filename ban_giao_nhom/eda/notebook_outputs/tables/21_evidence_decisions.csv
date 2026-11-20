@@ -1,0 +1,9 @@
+﻿bằng chứng,đề xuất,kiểm chứng tiếp,giới hạn
+Kích thước gốc 112/160; crop nhỏ/méo,"RGB, xử lý EXIF, giữ metadata gốc; resize 160 theo encoder",So khớp tensor online/offline và QA crop nhỏ,Phóng ảnh không khôi phục được chi tiết
+Input đã crop và bbox thường vượt biên,Phân biệt pre-cropped/aligned với scene; thử direct-resize vs redetect,"Tập thí điểm + validation, cùng policy B0/B1/B2",Không gọi mọi bbox ngoài khung là lỗi
+Brightness/blur khác giữa nguồn,Chưa áp ngưỡng loại chung hoặc CLAHE hàng loạt,Validation theo source/condition; báo rejection coverage,Proxy không là nhãn chất lượng mặt chuẩn
+Pixel-identical nhưng hai nhãn,"QA nhãn, original URL và alias trước split",A/C đối chiếu nguồn; uncertain có lý do,Không tự relabel bằng model đánh giá
+DigiFace đã có phụ kiện/che,B1 nền chưa thêm che; B2 cùng nền có che bổ sung,Cùng init/steps/batch/tuning budget,Không gọi B1 là toàn ảnh clean
+Synthetic–real domain gap,DigiFace train-candidate; real benchmark giữ ngoài train,So B0/B1/B2 trên protocol khóa; thêm webcam,PCA quality không chứng minh encoder nào tốt
+Detector từ chối và input quá nhỏ,Giữ lỗi trong end-to-end denominator; return reason rõ,Report conditional và toàn pipeline,Không chỉ đánh giá survivor crops
+MFR2 dùng lại ảnh/người giữa các cặp,Giữ protocol cặp riêng; CI theo cụm phù hợp,Không chia ngẫu nhiên từng cặp,848 dòng không phải 848 mẫu độc lập

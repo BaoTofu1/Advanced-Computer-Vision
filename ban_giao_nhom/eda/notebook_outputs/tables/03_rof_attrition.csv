@@ -1,0 +1,4 @@
+﻿condition,annotated_faces,requested_urls,crop_ok_faces,identities_requested,identities_with_crop,candidate_face_retention
+masked,515,463,264,67,57,0.512621359223301
+neutral,6659,6342,4356,182,181,0.6541522751163839
+sunglasses,2963,2720,2091,159,157,0.7057036787040162

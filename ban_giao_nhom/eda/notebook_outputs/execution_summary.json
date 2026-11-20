@@ -1,0 +1,34 @@
+{
+  "pixel_images": 86980,
+  "readable": 86980,
+  "source_counts": {
+    "DigiFace": 80000,
+    "MFR2": 269,
+    "ROF": 6711
+  },
+  "detector_inputs": 11580,
+  "detector_states": {
+    "single_face": 10788,
+    "no_face": 615,
+    "multiple_faces": 163,
+    "input_too_small": 14
+  },
+  "pixel_duplicate_groups": 5,
+  "near_duplicate_candidates": 488,
+  "QA_queue": 4810,
+  "mfr2_pair_rows": 848,
+  "mfr2_unique_undirected": 843,
+  "pixel_fingerprint": "1664283ec9203ef8b8aaefcd9d3dc1f1a13bd9cb7bdf2295c0a32def8b0e328c",
+  "detector_fingerprint": "30d54db3199e82ba1c7014050493efbf9ec334320b6d50b06a85ced0b3ac3f44",
+  "environment": {
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "torch": "2.2.2+cu121",
+    "cuda_runtime": "12.1",
+    "device": "cuda:0",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "seed": 20261021
+  },
+  "stop_point": "acquisition + EDA; no batch preprocessing, split assignment or fine-tuning",
+  "checks": "PASS"
+}

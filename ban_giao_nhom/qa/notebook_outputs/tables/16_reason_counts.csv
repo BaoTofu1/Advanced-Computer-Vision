@@ -1,0 +1,16 @@
+﻿reason,images
+hold_below_baseline_min_side20,14
+hold_confirmed_photo_cross_label,2
+hold_exact_pixel_cross_label,2
+hold_low_information_crop,18
+hold_manual_crop_or_subject_review,25
+hold_photo_condition_conflict,15
+hold_subject_box_mapping_unresolved,723
+hold_verified_logo_source_asset,34
+proposed_duplicate_secondary,89
+review_author_box_clipped,83
+review_detector_policy_failure,625
+review_extreme_aspect_ratio,5
+review_near_pair_unresolved,30
+review_quality_tail_proxy,2589
+review_source_landmark_geometry,19

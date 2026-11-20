@@ -1,0 +1,199 @@
+{
+  "status": "PASS",
+  "fresh_kernel": true,
+  "elapsed_seconds": 49.044,
+  "executed_code_cells": 38,
+  "notebook": "ban_giao_nhom/eda/EDA_kham_pha_du_lieu.ipynb",
+  "timeline": [
+    {
+      "cell_index": 2,
+      "execution_count": 1,
+      "elapsed_since_start": 3.63
+    },
+    {
+      "cell_index": 4,
+      "execution_count": 2,
+      "elapsed_since_start": 3.639
+    },
+    {
+      "cell_index": 6,
+      "execution_count": 3,
+      "elapsed_since_start": 3.649
+    },
+    {
+      "cell_index": 7,
+      "execution_count": 4,
+      "elapsed_since_start": 3.661
+    },
+    {
+      "cell_index": 9,
+      "execution_count": 5,
+      "elapsed_since_start": 3.676
+    },
+    {
+      "cell_index": 10,
+      "execution_count": 6,
+      "elapsed_since_start": 4.704
+    },
+    {
+      "cell_index": 12,
+      "execution_count": 7,
+      "elapsed_since_start": 5.357
+    },
+    {
+      "cell_index": 14,
+      "execution_count": 8,
+      "elapsed_since_start": 5.366
+    },
+    {
+      "cell_index": 15,
+      "execution_count": 9,
+      "elapsed_since_start": 7.661
+    },
+    {
+      "cell_index": 17,
+      "execution_count": 10,
+      "elapsed_since_start": 7.67
+    },
+    {
+      "cell_index": 18,
+      "execution_count": 11,
+      "elapsed_since_start": 15.296
+    },
+    {
+      "cell_index": 19,
+      "execution_count": 12,
+      "elapsed_since_start": 16.949
+    },
+    {
+      "cell_index": 21,
+      "execution_count": 13,
+      "elapsed_since_start": 17.285
+    },
+    {
+      "cell_index": 23,
+      "execution_count": 14,
+      "elapsed_since_start": 17.868
+    },
+    {
+      "cell_index": 25,
+      "execution_count": 15,
+      "elapsed_since_start": 17.895
+    },
+    {
+      "cell_index": 27,
+      "execution_count": 16,
+      "elapsed_since_start": 19.935
+    },
+    {
+      "cell_index": 29,
+      "execution_count": 17,
+      "elapsed_since_start": 21.768
+    },
+    {
+      "cell_index": 31,
+      "execution_count": 18,
+      "elapsed_since_start": 25.279
+    },
+    {
+      "cell_index": 33,
+      "execution_count": 19,
+      "elapsed_since_start": 26.366
+    },
+    {
+      "cell_index": 35,
+      "execution_count": 20,
+      "elapsed_since_start": 26.715
+    },
+    {
+      "cell_index": 37,
+      "execution_count": 21,
+      "elapsed_since_start": 30.843
+    },
+    {
+      "cell_index": 39,
+      "execution_count": 22,
+      "elapsed_since_start": 30.88
+    },
+    {
+      "cell_index": 41,
+      "execution_count": 23,
+      "elapsed_since_start": 40.086
+    },
+    {
+      "cell_index": 43,
+      "execution_count": 24,
+      "elapsed_since_start": 42.153
+    },
+    {
+      "cell_index": 45,
+      "execution_count": 25,
+      "elapsed_since_start": 42.304
+    },
+    {
+      "cell_index": 47,
+      "execution_count": 26,
+      "elapsed_since_start": 42.394
+    },
+    {
+      "cell_index": 48,
+      "execution_count": 27,
+      "elapsed_since_start": 43.794
+    },
+    {
+      "cell_index": 50,
+      "execution_count": 28,
+      "elapsed_since_start": 44.28
+    },
+    {
+      "cell_index": 52,
+      "execution_count": 29,
+      "elapsed_since_start": 44.325
+    },
+    {
+      "cell_index": 54,
+      "execution_count": 30,
+      "elapsed_since_start": 45.203
+    },
+    {
+      "cell_index": 55,
+      "execution_count": 31,
+      "elapsed_since_start": 46.223
+    },
+    {
+      "cell_index": 57,
+      "execution_count": 32,
+      "elapsed_since_start": 46.526
+    },
+    {
+      "cell_index": 59,
+      "execution_count": 33,
+      "elapsed_since_start": 46.536
+    },
+    {
+      "cell_index": 60,
+      "execution_count": 34,
+      "elapsed_since_start": 47.503
+    },
+    {
+      "cell_index": 62,
+      "execution_count": 35,
+      "elapsed_since_start": 47.69
+    },
+    {
+      "cell_index": 64,
+      "execution_count": 36,
+      "elapsed_since_start": 47.732
+    },
+    {
+      "cell_index": 67,
+      "execution_count": 37,
+      "elapsed_since_start": 47.827
+    },
+    {
+      "cell_index": 69,
+      "execution_count": 38,
+      "elapsed_since_start": 47.836
+    }
+  ]
+}

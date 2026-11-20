@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "scope": "in-memory fixtures executed against notebook merge_group_decisions; no human decisions seeded",
+  "checks": {
+    "valid_survives_two_merges": "PASS",
+    "unreviewed_not_confirmed": "PASS",
+    "proposal_and_identity_flags_preserved": "PASS",
+    "duplicate_rejected": "PASS",
+    "unknown_id_rejected": "PASS",
+    "invalid_decision_rejected": "PASS",
+    "blank_decision_rejected": "PASS",
+    "missing_evidence_rejected": "PASS",
+    "malformed_date_rejected": "PASS",
+    "bad_schema_rejected": "PASS",
+    "header_only_confirms_nobody": "PASS"
+  },
+  "actual_group_decision_rows": 0
+}
