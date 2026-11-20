@@ -1,0 +1,19 @@
+{
+  "version": "tri_comparison_v1",
+  "thresholds": {
+    "B0": 0.693074107170105,
+    "B1_Bao": 0.5314350128173828,
+    "B2_Bao": 0.5252442359924316,
+    "B1_Tri": 0.5494138598442078,
+    "B2_Tri": 0.573417603969574
+  },
+  "files_sha256": {
+    "B1_Bao": "c68f5a1e9aa926448f263efe5b03cb25582ffea4e2681fac64b492a7a707871f",
+    "B2_Bao": "b57e1c7309cb580edfd6ed18702e884192daa7da064a99a2dbdd541c1756d639",
+    "B1_Tri": "1f89215b1c41bcb65776f6e02b572fa56c874b0b8f08b0689901c2d22ebcace5",
+    "B2_Tri": "2806f8f1933130dbfd3a9e2ebb08a18b64e0f09c80998f86b2cd57f072e447ea"
+  },
+  "rule": "giống bước 7: FPIR <= 5% trên DigiFace val, DIR lớn nhất, hòa lấy ngưỡng cao hơn",
+  "step7_lock_sha256": "f7daf94a463cfabf21b6526f0b47b920169829f6a8b2f5538f5a90397ded4a45",
+  "locked_at_utc": "2026-11-20T09:10:31.926438+00:00"
+}
