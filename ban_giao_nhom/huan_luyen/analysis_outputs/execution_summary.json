@@ -1,0 +1,21 @@
+{
+  "checks": "PASS",
+  "metrics_recomputed": 6,
+  "per_kind_groups": 12,
+  "true_resume_branches": 2,
+  "negative_resume_faults_detected": 4,
+  "diagnostic_raw_train_images_hashed": 32,
+  "pilot_pixel_cache_required": false,
+  "pilot_checkpoints_modified": false,
+  "training_budget_changed": false,
+  "test_used": false,
+  "external_used": false,
+  "source_sha256": "a2198980fca42e22d70c8fa413264f91fba41fb87c32cbe830c7aef526e85c94",
+  "input_sha256": {
+    "pilot_summary": "18ff45e1738ebbad02cd4ed18e148abb67fec763d2fdc419f86913eca67b5777",
+    "predictions": "48651af447a869950f3964a61411fb976e28c66ad05964486ae19db9f432aa6f",
+    "variants": "af91e38bd44b2d086e5ab44082419463893393583b37a1568e0cea9b84160df0"
+  },
+  "elapsed_seconds": 9.076529599999958,
+  "executed_at_utc": "2026-11-06T08:31:56.703375+00:00"
+}

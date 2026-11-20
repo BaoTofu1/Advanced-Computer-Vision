@@ -1,0 +1,36 @@
+{
+  "checks": "PASS",
+  "mode": "computed_now",
+  "fingerprint": "37d4eca6430685205f5063ccc5f142f929814ad33225caf2366399207550c181",
+  "val_content_sha256": "6de3c4264f22e48e80682c0a8595daf94edaf19ab8ea7d3e287bc5e1fb8ced24",
+  "images": 8000,
+  "prepared_A": 8000,
+  "prepared_B": 7789,
+  "enrolled_A": 100,
+  "enrolled_B": 97,
+  "threshold_A": 0.693074107170105,
+  "DIR_A": 0.5716216216216217,
+  "FPIR_A": 0.05,
+  "threshold_B": 0.6773741245269775,
+  "DIR_B": 0.5472972972972973,
+  "FPIR_B": 0.05,
+  "rank1_closed_set": {
+    "A": 0.8286486486486486,
+    "B": 0.7967567567567567
+  },
+  "train_or_test_images_used": false,
+  "external_images_used": false,
+  "fine_tuning": false,
+  "all_raw_validation_hashed_now": 8000,
+  "score_export": "17_significant_digits",
+  "decisions_P1_P5": {
+    "P1": "conservative_withhold",
+    "P2": "base_gallery_3",
+    "P3": "external_test_only",
+    "P4": "fpir_05_empirical",
+    "P5": "direct_resize_digiface"
+  },
+  "notebook_source_sha256": "b14e864ef247164037461239d7936b4e0949c9a1267c3e400afeb40d118578c1",
+  "executed_at_utc": "2026-11-05T09:14:39.535995+00:00",
+  "elapsed_seconds": 209.3
+}

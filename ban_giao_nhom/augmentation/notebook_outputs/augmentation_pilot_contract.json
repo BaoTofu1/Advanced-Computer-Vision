@@ -1,0 +1,86 @@
+{
+  "augmentation": {
+    "version": "rectangle_occlusion_v1",
+    "seed": 20261105,
+    "size": 160,
+    "train_probability": 0.5,
+    "kinds": [
+      "eyes",
+      "lower",
+      "left",
+      "right"
+    ],
+    "boxes": {
+      "eyes": [
+        8,
+        36,
+        152,
+        82
+      ],
+      "lower": [
+        12,
+        82,
+        148,
+        144
+      ],
+      "left": [
+        4,
+        16,
+        56,
+        144
+      ],
+      "right": [
+        104,
+        16,
+        156,
+        144
+      ]
+    },
+    "jitter_pixels": 4,
+    "fill_values": [
+      32,
+      96,
+      160,
+      224
+    ],
+    "area_denominator": "whole_160x160_frame_not_face_area",
+    "normalization_after_augmentation": "(pixel_0_255 - 127.5)/128 exactly once",
+    "val_policy": "one_fixed_forced_occlusion_per_query; gallery_unchanged",
+    "test_policy": "same_predeclared_algorithm; materialize_only_after_final_config_lock"
+  },
+  "pilot": {
+    "version": "pilot_128ids_v1",
+    "seed": 20261105,
+    "identities": 128,
+    "batch_size": 32,
+    "head_warmup_epochs": 1,
+    "fine_tune_epochs": 2,
+    "full_training_claimed": false,
+    "checkpoint_selection": "max_base_validation_DIR_at_FPIR05; tie:occluded_DIR_at_base_threshold; tie:earlier_epoch",
+    "encoder_open_layers": [
+      "block8",
+      "last_linear",
+      "last_bn"
+    ],
+    "bn_running_stats": "frozen_all_layers",
+    "dropout": "train_only_during_encoder_fine_tune",
+    "optimizer": "AdamW",
+    "lr_head": 0.001,
+    "lr_encoder": 3e-05,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 5.0,
+    "amp": false,
+    "evaluation_batch_size": 256
+  },
+  "implementation_sha256": "753125a67b989139ae8a90792829e8129b8933db0f1d42ed93741164c7e76523",
+  "input_sha256": {
+    "roles": "b230104ba43a8060c948cba3c06473256d535efc7974930a90acaf7bc3c78a6a",
+    "decisions": "8afee02167381ef2684d1e6f395522b7e85b588f03e00f3e1b0bc9c5b42e651e"
+  },
+  "label_mapping_sha256": "d0ae093f845cec566d4d97feb39080871c1510fd4f324a4a36cca6fc60a71164",
+  "train_spec_sha256": "3ee52499922e697c33755fc7c7ac0b966f710e94eebacbc9b6220a79f17bd038",
+  "validation_spec_sha256": "af91e38bd44b2d086e5ab44082419463893393583b37a1568e0cea9b84160df0",
+  "test_materialized": false,
+  "external_used": false,
+  "version": "step6_augmentation_pilot_contract_v1"
+}

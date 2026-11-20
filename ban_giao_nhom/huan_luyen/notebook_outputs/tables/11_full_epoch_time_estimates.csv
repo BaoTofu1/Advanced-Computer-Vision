@@ -1,0 +1,3 @@
+﻿stage,median_step_seconds,full_train_images,full_steps_per_epoch,estimated_minutes_per_full_epoch,assumption
+fine,0.031388850067742169,57600,1800,0.94166550203226507,same_partial_encoder_policy_cached_uint8_batch32; excludes_validation_checkpoint_IO
+warmup,0.027546750090550631,57600,1800,0.82640250271651894,same_partial_encoder_policy_cached_uint8_batch32; excludes_validation_checkpoint_IO

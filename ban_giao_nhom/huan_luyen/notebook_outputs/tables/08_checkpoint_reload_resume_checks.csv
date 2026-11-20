@@ -1,0 +1,3 @@
+﻿branch,epoch,encoder_embedding_exact,resume_loss_diff,resume_max_weight_diff,encoder_sha256
+B1,2,True,0,0,8a479aff22f688e8e5f85d7b8fbc37eac31970337c794c85040510faeb1bd86b
+B2,2,True,0,0,fb4561560cd023fa37387fa20e20b39bcdded027e5d414685d4da69db7cfd0ee

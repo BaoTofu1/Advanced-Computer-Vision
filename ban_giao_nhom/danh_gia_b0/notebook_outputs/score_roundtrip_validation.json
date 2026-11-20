@@ -1,0 +1,7 @@
+{
+  "checks": "PASS",
+  "score_dtype": "float32",
+  "export_significant_digits": 17,
+  "predictions": 15400,
+  "decisions_changed_after_roundtrip": 0
+}

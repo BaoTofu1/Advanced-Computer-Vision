@@ -1,0 +1,2 @@
+﻿run,epoch,threshold,DIR,FPIR,correct_accepted,unknown_accepted,known_queries,unknown_queries,occluded_DIR,occluded_FPIR
+B0,-1,0.69307410717010498,0.57162162162162167,0.050000000000000003,2115,200,3700,4000,0.22729729729729731,0.0275

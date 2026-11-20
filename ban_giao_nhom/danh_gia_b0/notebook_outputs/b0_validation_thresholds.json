@@ -1,0 +1,24 @@
+{
+  "status": "validation_selected_not_applied_to_test",
+  "protocol_version": "identity_protocol_draft_v2",
+  "fpir_target": 0.05,
+  "gallery_identities": 100,
+  "gallery_images_per_identity": 3,
+  "encoder": "InceptionResnetV1(pretrained=vggface2, classify=False).eval()",
+  "encoder_state_sha256": "988babfb79a4be0620cf47d259d4da35f8fc07573e92f83a2e388003c17759ba",
+  "runs": {
+    "B0_A": {
+      "pipeline": "direct_resize_160_PIL_BILINEAR",
+      "threshold": 0.693074107170105,
+      "DIR_val": 0.5716216216216217,
+      "FPIR_val": 0.05
+    },
+    "B0_B": {
+      "pipeline": "MTCNN_redetect_exactly_one_face_then_extract_160",
+      "threshold": 0.6773741245269775,
+      "DIR_val": 0.5472972972972973,
+      "FPIR_val": 0.05
+    }
+  },
+  "primary_run": "B0_A (theo quyết định P5)"
+}

@@ -1,0 +1,106 @@
+{
+  "checks": "PASS",
+  "scope": "pilot_128_train_identities_not_final_full_training",
+  "train_identities": 128,
+  "train_images": 4608,
+  "monitor_images": 512,
+  "validation_images": 8000,
+  "validation_occluded_queries": 7700,
+  "epochs_per_branch": {
+    "B1": 3,
+    "B2": 3
+  },
+  "optimizer_steps_per_branch": {
+    "B1": 432,
+    "B2": 432
+  },
+  "same_initialization": true,
+  "same_image_order": true,
+  "raw_images_hashed_now": 13120,
+  "pixel_cache_mode": "computed_now",
+  "training_mode": "computed_now",
+  "frozen_and_BN_checks": "PASS_each_epoch",
+  "gradient_checks": "PASS_every_finetune_batch",
+  "checkpoint_reload_resume": "PASS",
+  "score_roundtrip": "PASS",
+  "best_encoder_files": {
+    "B1": {
+      "path": "ban_giao_nhom/huan_luyen/checkpoints/B1_best_encoder.pt",
+      "sha256": "8a479aff22f688e8e5f85d7b8fbc37eac31970337c794c85040510faeb1bd86b",
+      "bytes": 94267294
+    },
+    "B2": {
+      "path": "ban_giao_nhom/huan_luyen/checkpoints/B2_best_encoder.pt",
+      "sha256": "fb4561560cd023fa37387fa20e20b39bcdded027e5d414685d4da69db7cfd0ee",
+      "bytes": 94267294
+    }
+  },
+  "best_epochs": {
+    "B1": 2,
+    "B2": 2
+  },
+  "best_metrics": {
+    "B1": {
+      "threshold": 0.6316949725151062,
+      "DIR": 0.6648648648648648,
+      "FPIR": 0.05,
+      "correct_accepted": 2460,
+      "unknown_accepted": 200,
+      "known_queries": 3700,
+      "unknown_queries": 4000,
+      "occluded_DIR": 0.302972972972973,
+      "occluded_FPIR": 0.03075,
+      "eval_seconds": 14.004208100028336
+    },
+    "B2": {
+      "threshold": 0.6555914878845215,
+      "DIR": 0.6635135135135135,
+      "FPIR": 0.05,
+      "correct_accepted": 2455,
+      "unknown_accepted": 200,
+      "known_queries": 3700,
+      "unknown_queries": 4000,
+      "occluded_DIR": 0.31270270270270273,
+      "occluded_FPIR": 0.03,
+      "eval_seconds": 13.919491000007838
+    }
+  },
+  "B0_reference": {
+    "run": "B0",
+    "epoch": -1,
+    "threshold": 0.693074107170105,
+    "DIR": 0.5716216216216217,
+    "FPIR": 0.05,
+    "correct_accepted": 2115,
+    "unknown_accepted": 200,
+    "known_queries": 3700,
+    "unknown_queries": 4000,
+    "occluded_DIR": 0.2272972972972973,
+    "occluded_FPIR": 0.0275
+  },
+  "full_training_completed": false,
+  "test_used": false,
+  "external_used": false,
+  "raw_modified": false,
+  "contract_sha256": "ed80870c932b36424a1dfc447d8758b66fe645c7eb69d8abd504d754ce816642",
+  "initial_state_sha256": "6b4ceba3fc6270be431cf5fad250eba5613794a3c25a00907033c976d1ef6421",
+  "notebook_source_sha256": "dcf50b41afc49fe87d04b2d80980771e5fb0d1c7aed78612a4d83ffacef112ef",
+  "environment": {
+    "python": "3.11.9",
+    "torch": "2.2.2+cu121",
+    "facenet_pytorch": "2.6.0",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "pillow": "10.2.0",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "device": "cuda:0",
+    "vram_total_MiB": 8187.5,
+    "amp": false,
+    "cpu_threads": 4,
+    "data_loader_workers": 0,
+    "seed": 20261105
+  },
+  "train_and_validation_seconds": 88.06291169999167,
+  "executed_at_utc": "2026-11-05T09:23:21.016106+00:00",
+  "elapsed_seconds": 119.14289929997176
+}

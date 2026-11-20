@@ -1,0 +1,19 @@
+{
+  "checks": "PASS",
+  "train_identities": 128,
+  "train_images": 4608,
+  "monitor_images": 512,
+  "validation_images": 8000,
+  "train_epoch_specs": 13824,
+  "validation_occluded_queries": 7700,
+  "specs_checked": 13824,
+  "negative_checks": 3,
+  "raw_examples_hashed_now": 4,
+  "raw_modified": false,
+  "test_pixels_used": false,
+  "external_used": false,
+  "training_started": false,
+  "contract_sha256": "ed80870c932b36424a1dfc447d8758b66fe645c7eb69d8abd504d754ce816642",
+  "executed_at_utc": "2026-11-05T09:20:28.484972+00:00",
+  "elapsed_seconds": 16.248
+}

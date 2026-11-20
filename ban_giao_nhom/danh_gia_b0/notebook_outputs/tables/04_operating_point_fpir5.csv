@@ -1,0 +1,3 @@
+﻿pipeline,threshold,DIR,FPIR,correct_accepted,wrong_identity_accepted,known_rejected_by_threshold,known_preparation_failed,unknown_accepted,unknown_rejected,unknown_preparation_failed,known_queries,unknown_queries
+A,0.69307410717010498,0.57162162162162167,0.050000000000000003,2115,65,1520,0,200,3800,0,3700,4000
+B,0.67737412452697754,0.54729729729729726,0.050000000000000003,2025,60,1535,80,200,3673,127,3700,4000

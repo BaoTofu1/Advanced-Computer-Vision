@@ -1,0 +1,10 @@
+﻿case,image_id,canonical_identity,top_identity,top_score
+Người lạ bị nhận nhầm,DF_8bbde8d358705c4c448f,DigiFace:1434,DigiFace:1691,0.81256008148193359
+Người lạ bị nhận nhầm,DF_0e2ddec1a48eb4f7bcf5,DigiFace:1434,DigiFace:1691,0.79836773872375488
+Người lạ bị nhận nhầm,DF_0a60d48032a928c4b675,DigiFace:1434,DigiFace:1691,0.79811090230941772
+Nhầm sang người khác,DF_844829a115ba09826184,DigiFace:922,DigiFace:1039,0.79433923959732056
+Nhầm sang người khác,DF_0b5c59ad3d60c3a6a8c8,DigiFace:976,DigiFace:1243,0.79172158241271973
+Nhầm sang người khác,DF_8ebc2d45f6a92cf53cfe,DigiFace:1499,DigiFace:330,0.78995388746261597
+Người quen bị từ chối,DF_e945f62c217f1ec45636,DigiFace:89,DigiFace:1983,0.31506133079528809
+Người quen bị từ chối,DF_0a8e89ef31bcd5612257,DigiFace:1462,DigiFace:976,0.34352827072143555
+Người quen bị từ chối,DF_ee4445be41cc7bf9e075,DigiFace:321,DigiFace:321,0.35573399066925049

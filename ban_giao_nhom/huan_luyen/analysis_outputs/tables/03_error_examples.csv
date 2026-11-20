@@ -1,0 +1,7 @@
+﻿image_id,category,kind,B1_hit,B2_hit
+DF_014a8c5b34cad1ca0752,B2 đúng thêm,eyes,False,True
+DF_040ec039db044fa8d471,B2 đúng thêm,right,False,True
+DF_060f436d28ab8d33f7d4,B2 đúng thêm,right,False,True
+DF_01c612b5d53c469eb544,B2 mất kết quả đúng,right,True,False
+DF_02a75a65e026d649a023,B2 mất kết quả đúng,left,True,False
+DF_07ee9604385655f3bc9a,B2 mất kết quả đúng,eyes,True,False
